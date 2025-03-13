@@ -18,13 +18,15 @@ public class Q03 {
 
     public static void main(String args[]) {
         Q03 cod = new Q03();
-        String texto = "";
+        
+        String texto = MyIO.readLine();
         
         // Lê as entradas até o comando "FIM"
-        texto = MyIO.readLine(); 
+        
         while (!(texto.equals("FIM"))) {
-            System.out.println(cod.textbf(texto)); // Aplica a cifra e printa o texto codificado
+            MyIO.println(cod.textbf(texto)); // Aplica a cifra e printa o texto codificado
             texto = MyIO.readLine(); 
         }
+        
     }
 }

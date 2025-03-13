@@ -51,7 +51,7 @@ public static void main (String args []){
          if(quest12.testeSenha(senha)){
             System.out.println("SIM");
          }else{
-            System.out.println("NÃO");
+            System.out.println("NAO");
          }
         senha = sc.nextLine();
     }

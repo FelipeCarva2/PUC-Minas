@@ -19,12 +19,6 @@ public class Q18 {
             
         }
         
-        
-        
-        
-        
-        
-        
     }
 
     public static void main(String args[]) {
@@ -35,7 +29,7 @@ public class Q18 {
         // Lê as entradas até o comando "FIM"
         texto = MyIO.readLine(); 
         while (!(texto.equals("FIM"))) {
-            System.out.println(quest18.textbf(texto, i)); // Aplica a cifra e printa o texto codificado
+            MyIO.println(quest18.textbf(texto, i)); // Aplica a cifra e printa o texto codificado
             texto = MyIO.readLine(); 
         }
     }
