@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------------------------------------------- //
 // Imports
-import java.util.stream.Collectors;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.text.SimpleDateFormat;
@@ -10,8 +10,8 @@ import java.util.*;
 
 public class Show{
     // Global variables
-    public static final String FILE_PATH = "/tmp/disneyplus.csv";
-    //public static final String FILE_PATH = "/home/felipe/PUCMinas/AEDS2/tp02/Q01/disneyplus.csv";
+    //public static final String FILE_PATH = "/tmp/disneyplus.csv";
+    public static final String FILE_PATH = "/home/felipe/PUCMinas/AEDS2/tp02/Q01/disneyplus.csv";
     //public static ArrayList<Show> allShows = new ArrayList<Show>();
 
     //Atributos
