@@ -7,8 +7,8 @@
 #include <time.h>
 // ---------------------------------------------------------------------------------------------------- //
 //Variaveis globais
-#define FILE_PATH "/home/felipe/PUCMinas/AEDS2/tp02/Q02/disneyplus.csv"
-//#define FILE_PATH "/tmp/disneyplus.csv"
+//#define FILE_PATH "/home/felipe/PUCMinas/AEDS2/tp02/Q02/disneyplus.csv"
+#define FILE_PATH "/tmp/disneyplus.csv"
 typedef struct Show{
     char show_id[10];
     char type[100];
@@ -125,6 +125,30 @@ Show show_new(
 //Funções
 void printShow(Show*, char*);
 
+//Função clone
+Show show_clone(Show *original) {
+    Show clone = show_newEmpty();
+    
+    show_setId(&clone, original->show_id);
+    show_setType(&clone, original->type);
+    show_setTitle(&clone, original->title);
+    show_setDirector(&clone, original->director);
+    show_setCountry(&clone, original->country);
+    show_setDateAdded(&clone, original->date_added);
+    show_setReleaseYear(&clone, original->release_year);
+    show_setRating(&clone, original->rating);
+    show_setDuration(&clone, original->duration);
+    
+    
+    for(int i = 0; i < 100 && strlen(original->cast[i]) > 0; i++) {
+        show_setCastMember(&clone, i, original->cast[i]);
+    }
+    for(int i = 0; i < 100 && strlen(original->listed_in[i]) > 0; i++) {
+        show_setListedInMember(&clone, i, original->listed_in[i]);
+    } 
+    return clone;
+}
+
 //+-+-+--+-+-+-+ Função para ordenar um array de Strings +-+-+--+-+-+-+
 void ordenarStrings(char arr[][100], int tamanho) {
     char temp[100];
@@ -142,7 +166,7 @@ void ordenarStrings(char arr[][100], int tamanho) {
 
 //+-+-+--+-+-+-+ Função transformar uma string em um objeto +-+-+--+-+-+-+
 Show TrasInObj(char* linha) {
-    Show showzinho;
+    Show showzinho = show_newEmpty();
     char obj[11][200] = {0}; 
     int i = 0, l = 0;
     
@@ -331,7 +355,7 @@ void printShow(Show *s, char *id) {
                 printf("N/A");
             }
         
-            printf(" ## o %d", s[t].release_year);
+            printf(" ## %d", s[t].release_year);
             printf(" ## %s", s[t].rating);
             printf(" ## %s", s[t].duration);
         
@@ -354,7 +378,7 @@ void printShow(Show *s, char *id) {
             }
             printf("]");
         
-            printf("\n");
+            printf(" ##\n");
 
         }
     }
@@ -402,8 +426,7 @@ int main(){
         scanf("%s", id);
         id[(strlen(id))]='\0';
     }
-
-  printf("%s", show[5].cast[0]);
+    printf("%s", show[3].cast[0]);
    
       
 
