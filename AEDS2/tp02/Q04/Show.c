@@ -23,7 +23,8 @@ typedef struct Show{
     char listed_in[100][100];   
 } Show;
 Show show[1368];
-int con=0;
+Show lista[1368];
+int con=0, mov=0, comp=0;
 // ---------------------------------------------------------------------------------------------------- //
 // ---------------------------------------------------------------------------------------------------- //
 // Getters para a estrutura Show
@@ -289,7 +290,6 @@ Show TrasInObj(char* linha) {
             date_str[strlen(date_str)-1] = '\0';
         }
         
-        // Exemplo simples para formato "January 1, 2020"
         char month[20];
         int day, year;
         if(sscanf(date_str, "%s %d, %d", month, &day, &year) == 3) {
@@ -394,11 +394,10 @@ void Ler(){
         printf("Erro ao abrir o arquivo para leitura.\n");
         return;
     }
-    char linha[500]; // Buffer para armazenar cada linha
+    char linha[500];
     int aux=0;
     int i=0;
     while (fgets(linha, sizeof(linha), file) != NULL) {
-        // Remove o caractere de nova linha, se existir
         linha[strcspn(linha, "\n")] = '\0';
         if(aux>0){           
             show[i] = TrasInObj(linha);
@@ -412,26 +411,100 @@ void Ler(){
 
 }
 
-//+-+-+--+-+-+-+ Função main +-+-+--+-+-+-+
-int main(){
+//+-+-+--+-+-+-+ Função Pesquisa Binaria +-+-+--+-+-+-+
+void buscaBinariaPorTitulo(Show *array, int tamanho, char *titulo) {
+    int esquerda = 0;
+    int direita = tamanho - 1;
+    int encontrado = 0;
     
-    
-    Ler();
-    char id[10];
-    scanf("%s", id);
-    id[(strlen(id))]='\0';
-    
-    while (strcmp(id, "FIM") != 0) {
-        printShow(show, id);
-        scanf("%s", id);
-        id[(strlen(id))]='\0';
+    while (esquerda <= direita) {
+        int meio = esquerda + (direita - esquerda) / 2;
+        int comparacao = strcmp(array[meio].title, titulo);
+        
+        if (comparacao == 0) {
+            encontrado = 1;
+            break;
+        }
+        comp++;
+        
+        if (comparacao < 0) {
+            esquerda = meio + 1;
+        } else {
+            direita = meio - 1;
+        }
+        comp++;
     }
     
-   
-      
+    if (encontrado) {
+        printf("SIM\n");
+    } else {
+        printf("NAO\n");
+    }
+}
 
-   
+//+-+-+--+-+-+-+ Função para comparar títulos +-+-+--+-+-+-+
+int compararTitulos(const void *a, const void *b) {
+    const Show *showA = (const Show *)a;
+    const Show *showB = (const Show *)b;
+    return strcmp(showA->title, showB->title);
+}
+
+//+-+-+--+-+-+-+ Função para ordenar o array por título +-+-+--+-+-+-+
+void ordenarPorTitulo(Show *array, int tamanho) {
+    qsort(array, tamanho, sizeof(Show), compararTitulos);
+}
+
+
+//+-+-+--+-+-+-+ Função main +-+-+--+-+-+-+
+int main() {
+    Ler();
+    char id[10];
+    char titulo[100];
+    int tamanhoLista = 0;
+    struct timespec inicio, fim;
+    double duracao_ms = 0.0;
     
-   
+    // Loop para criar o array a ser pesquisado 
+    scanf("%s", id);
+    id[strlen(id)] = '\0';
+    
+    while (strcmp(id, "FIM") != 0) {
+        for(int i = 0; i < 1368; i++) {
+            if (strcmp(show[i].show_id, id) == 0) {
+                lista[tamanhoLista] = show_clone(&show[i]);
+                tamanhoLista++;
+                break;
+            }
+        }
+        scanf("%s", id);
+        id[strlen(id)] = '\0';
+    }
+    
+    // Ordenar a lista para permitir busca binária
+    ordenarPorTitulo(lista, tamanhoLista);
+
+    //for(int i=0;i<tamanhoLista;i++){printShow(lista, lista[i].show_id);} //Teste de ordenação
+    
+    // Loop para pesquisar os shows por título
+    scanf(" %[^\n]", titulo);  // Lê toda a linha incluindo espaços
+    titulo[strlen(titulo)] = '\0';
+    
+    while (strcmp(titulo, "FIM") != 0) {
+       
+        clock_gettime(CLOCK_MONOTONIC, &inicio);
+
+        buscaBinariaPorTitulo(lista, tamanhoLista, titulo); //Pesquisa binaria
+
+        //Tempo de execução
+        clock_gettime(CLOCK_MONOTONIC, &fim);
+        long duracao_ns = (fim.tv_sec - inicio.tv_sec) * 1000000000L + (fim.tv_nsec - inicio.tv_nsec);
+        duracao_ms += duracao_ns / 1000000.0;
+    
+
+        scanf(" %[^\n]", titulo);
+        titulo[strlen(titulo)] = '\0';
+    }
+    //printf(" %.3f ms \nComparacoes: %d \nMovimentacoes: %d", duracao_ms, comp, mov);
+  
     return 0;
 }
