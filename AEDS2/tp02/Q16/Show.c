@@ -7,8 +7,8 @@
 #include <time.h>
 // ---------------------------------------------------------------------------------------------------- //
 //Variaveis globais
-//#define FILE_PATH "/home/felipe/PUCMinas/AEDS2/tp02/Q02/disneyplus.csv"
-#define FILE_PATH "/tmp/disneyplus.csv"
+#define FILE_PATH "/home/felipe/PUCMinas/AEDS2/tp02/Q02/disneyplus.csv"
+//#define FILE_PATH "/tmp/disneyplus.csv"
 typedef struct Show{
     char show_id[10];
     char type[100];
@@ -661,7 +661,7 @@ int main() {
         long duracao_ns = (fim.tv_sec - inicio.tv_sec) * 1000000000L + (fim.tv_nsec - inicio.tv_nsec);
         duracao_ms += duracao_ns / 1000000.0; 
     
-    //printf(" %.3f ms \nComparacoes: %d \nMovimentacoes: %d", duracao_ms, comp, mov);
+    printf(" %.3f ms \nComparacoes: %d \nMovimentacoes: %d", duracao_ms, comp, mov);
   
     return 0;
 }

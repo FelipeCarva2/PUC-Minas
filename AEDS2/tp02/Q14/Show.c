@@ -607,6 +607,173 @@ void Bolha(Show *array, int n) {
     }
 }
 
+//+-+-+--+-+-+-+ Algoritmo Inserção(type) +-+-+--+-+-+-+
+void Insercao(Show *array, int n) {
+    for (int i = 1; i < n; i++) {
+        Show tmp = array[i];
+        int j = i - 1;
+        
+        while (j >= 0 && (strcmp(array[j].type, tmp.type) > 0 || (strcmp(array[j].type, tmp.type) == 0 && strcmp(array[j].title, tmp.title) > 0))) {
+            array[j + 1] = array[j];
+            j--;
+            comp += 2; 
+            mov++; 
+        }
+        array[j + 1] = tmp;
+        mov++;
+    }
+}
+
+//+-+-+--+-+-+-+ Algoritmo HeapSort(Director) +-+-+--+-+-+-+
+int CmpDirETit(const Show *a, const Show *b) {
+    int cmp = strcmp(a->director, b->director);
+    if (cmp == 0) { // Se directors forem iguais, compara por title
+        return strcmp(a->title, b->title);
+    }
+    return cmp;
+}
+
+// Função para construir o heap
+void construirHeap(Show *array, int tamHeap) {
+    for(int i = tamHeap; i > 1 && CmpDirETit(&array[i], &array[i/2]) > 0; i /= 2) {
+        swapShows(&array[i], &array[i/2]);
+        comp++;
+    }
+    comp++;
+}
+
+// Função para obter o maior filho
+int getMaiorFilho(Show *array, int i, int tamHeap) {
+    int filho;
+    if (2*i == tamHeap || CmpDirETit(&array[2*i], &array[2*i+1]) > 0) {
+        filho = 2*i;
+    } else {
+        filho = 2*i + 1;
+    }
+    comp++;
+    return filho;
+}
+
+// Função para reconstruir o heap
+void reconstruirHeap(Show *array, int tamHeap) {
+    int i = 1;
+    while(i <= (tamHeap/2)) {
+        int filho = getMaiorFilho(array, i, tamHeap);
+        if(CmpDirETit(&array[filho], &array[i]) > 0) {
+            swapShows(&array[i], &array[filho]);
+            i = filho;
+            comp++;
+            mov++;
+        } else {
+            i = tamHeap;
+        }
+        comp++;
+    }
+}
+
+
+void Heapsort(Show *array, int n) {
+    
+    // Criar array temporário com índice 1-based
+    Show arrayTmp[n+1];
+    for(int i = 0; i < n; i++) {
+        arrayTmp[i+1] = array[i];
+        mov++;
+    }
+
+    // Construção do heap
+    for(int tamHeap = 2; tamHeap <= n; tamHeap++) {
+        construirHeap(arrayTmp, tamHeap);
+    }
+
+    // Ordenação propriamente dita
+    int tamHeap = n;
+    while(tamHeap > 1) {
+        swapShows(&arrayTmp[1], &arrayTmp[tamHeap--]);
+        mov++;
+        reconstruirHeap(arrayTmp, tamHeap);
+    }
+
+    // Copiar de volta para o array original 
+    for(int i = 0; i < n; i++) {
+        array[i] = arrayTmp[i+1];
+        mov++;
+    }
+}
+
+//+-+-+--+-+-+-+ Algoritmo Radixsort(release_year) +-+-+--+-+-+-+
+
+// Obtem o máximo release_year
+int getMax(Show *array, int n) {
+    int max = array[0].release_year;
+    for (int i = 1; i < n; i++) {
+        comp++;
+        if (array[i].release_year > max) {
+            max = array[i].release_year;
+        }
+    }
+    return max;
+}
+
+
+void radcountingSort(Show *array, int n, int exp) {
+    Show *output = (Show *)malloc(n * sizeof(Show));
+    int count[10] = {0};
+    
+    //Agora, o count[i] contem o numero de elemento iguais a i
+    for (int i = 0; i < n; i++) {
+        count[(array[i].release_year / exp) % 10]++;
+    }
+    
+    //Agora, o count[i] contem o numero de elemento menores ou iguais a i
+    for (int i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
+    }
+    
+    //Ordenando
+    for (int i = n - 1; i >= 0; i--) {
+        int index = (array[i].release_year / exp) % 10;
+        output[count[index] - 1] = array[i];
+        count[index]--;
+    }
+    
+    // Copia de volta para o array original
+    for (int i = 0; i < n; i++) {
+        array[i] = output[i];
+    }
+    
+    free(output);
+}
+
+// Função principal do Radix Sort
+void radixSort(Show *array, int n) {
+    int max = getMax(array, n);
+    
+    // Aplica counting sort para cada dígito
+    for (int exp = 1; max / exp > 0; exp *= 10) {
+        radcountingSort(array, n, exp);
+    }
+    
+    //ordena por titulo se o ano for igual
+    for (int i = 1; i < n; i++) {
+        comp++;
+        if (array[i].release_year == array[i - 1].release_year) {
+            Show key = array[i];
+            int j = i - 1;
+            
+            // Mover elementos maiores que a chave para frente
+            while (j >= 0 && array[j].release_year == key.release_year && 
+                   strcmp(array[j].title, key.title) > 0) {
+                    comp++;
+                array[j + 1] = array[j];
+                mov++;
+                j--;
+            }
+            array[j + 1] = key;
+            mov++;
+        }
+    }
+}
 
 //+-+-+--+-+-+-+ Função main +-+-+--+-+-+-+
 int main() {
@@ -635,7 +802,7 @@ int main() {
     
     // Ordenar a lista 
     clock_gettime(CLOCK_MONOTONIC, &inicio);
-    Bolha(lista, tamanhoLista);
+    radixSort(lista, tamanhoLista);
     clock_gettime(CLOCK_MONOTONIC, &fim);
     
     //For para printar os dados da lista
@@ -649,3 +816,19 @@ int main() {
   
     return 0;
 }
+
+/*
+Explicação do RadixSort:
+É um algoritmpo de ordenação que ordena casa a casa dos algarismos, começando com as unidades, depois dezenas, centenas ... até o dígito mais significativo
+
+O Radix Sort tem complexidade O(d · (n + k)), onde:
+n = número de elementos no array.
+d = número máximo de dígitos nos elementos.
+k = base numérica usada (geralmente 10 para números decimais).
+
+Explicação:
+
+O algoritmo faz d passadas (uma para cada dígito).
+
+Em cada passada, ele realiza uma ordenação estável (usando Counting Sort) que tem complexidade O(n + k).
+*/

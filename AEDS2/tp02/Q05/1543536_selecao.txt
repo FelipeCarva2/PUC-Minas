@@ -1,0 +1,1 @@
+1543536     6.866777 milisegundos       Compacoes: 44850      Movimentacoes: 882

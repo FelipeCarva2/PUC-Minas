@@ -10,8 +10,8 @@ import java.util.*;
 
 public class Show{
     // Global variables
-    public static final String FILE_PATH = "/tmp/disneyplus.csv";
-    //public static final String FILE_PATH = "/home/felipe/PUCMinas/AEDS2/tp02/Q01/disneyplus.csv";
+    //public static final String FILE_PATH = "/tmp/disneyplus.csv";
+    public static final String FILE_PATH = "/home/felipe/PUCMinas/AEDS2/tp02/Q01/disneyplus.csv";
     //public static ArrayList<Show> allShows = new ArrayList<Show>();  //Não utilizado
     public static int mov = 0, comp = 0; //Variaveis para contar movimentações e comparações
 
@@ -390,7 +390,7 @@ public class Show{
     
         ImprimirLista(lista);
         
-        //System.out.println(duracao + " milisegundos"    +   "\n"    +   "Compacoes: " + comp    +   "\n" + "Movimentacoes: " + mov);///
+        System.out.println(duracao + " milisegundos"    +   "\n"    +   "Compacoes: " + comp    +   "\n" + "Movimentacoes: " + mov);///
         
 		
 

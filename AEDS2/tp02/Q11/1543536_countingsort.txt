@@ -1,0 +1,1 @@
+1543536     0.993219 milisegundos       Compacoes: 2129     Movimentacoes: 1128

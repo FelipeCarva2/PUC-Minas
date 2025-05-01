@@ -1,0 +1,1 @@
+1543536     0.073 ms    Comparacoes: 486 

@@ -334,7 +334,7 @@ public class Show{
 
             title = sc.nextLine();
         }
-        //System.out.println(duracao + " milisegundos"    +   "\n"    +   "Compacoes: " + comp    +   "\n" + "Movimentacoes: " + mov);///
+        System.out.println(duracao + " milisegundos"    +   "\n"    +   "Compacoes: " + comp    +   "\n" + "Movimentacoes: " + mov);///
         
 		
 
