@@ -31,6 +31,23 @@ public class OrdemCmp{
         }
         return vet;
     }
+
+    public static int[] crescente(int[] array) {
+        int n = array.length;
+		for (int i = 0; i < n; i++) {
+			array[i] = i;
+		}
+        return array;
+	}
+
+
+	public static int[] decrescente(int[] array) {
+        int n = array.length;
+		for (int i = 0; i < n; i++) {
+			array[i] = n - 1 - i;
+		}
+        return array;
+	}
     //+-+-+--+-+-+-+ Função Printar vetor +-+-+--+-+-+-+
     public static void printVetor(int[] vet){
         System.out.println("Vetor de tamanho: " + vet.length);
@@ -132,10 +149,10 @@ public class OrdemCmp{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         double inicio, fim, duracao=0;
-        vet100 = preencheVetor(vet100);
-        vet1000 = preencheVetor(vet1000);
-        vet10000 = preencheVetor(vet10000);
-        vet100000 = preencheVetor(vet100000);
+        vet100 = decrescente(vet100);
+        vet1000 = decrescente(vet1000);
+        vet10000 = decrescente(vet10000);
+        vet100000 = decrescente(vet100000);
 
         //printVetor(vet100);
         //printVetor(vet1000);

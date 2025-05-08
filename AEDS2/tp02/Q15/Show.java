@@ -10,8 +10,8 @@ import java.util.*;
 
 public class Show{
     // Global variables
-    //public static final String FILE_PATH = "/tmp/disneyplus.csv";
-    public static final String FILE_PATH = "/home/felipe/PUCMinas/AEDS2/tp02/Q01/disneyplus.csv";
+    public static final String FILE_PATH = "/tmp/disneyplus.csv";
+    //public static final String FILE_PATH = "/home/felipe/PUCMinas/AEDS2/tp02/Q01/disneyplus.csv";
     //public static ArrayList<Show> allShows = new ArrayList<Show>();  //Não utilizado
     public static int mov = 0, comp = 0; //Variaveis para contar movimentações e comparações
 
@@ -345,7 +345,7 @@ public class Show{
      //+-+-+--+-+-+-+ Algoritmo de Seleção(title) +-+-+--+-+-+-+
      public static void Selecao(ArrayList<Show> lista) {
         int n = lista.size();
-        for (int i = 0; i < n - 1; i++) {
+        for (int i = 0; i < 10; i++) {
             int menor = i;
             for (int j = i + 1; j < n; j++) {
                 if (lista.get(j).getTitle().compareToIgnoreCase(lista.get(menor).getTitle()) < 0) {
@@ -583,7 +583,7 @@ public static void merge(ArrayList<Show> lista, ArrayList<Show> esquerda, ArrayL
     
         
         
-        System.out.println(duracao + " milisegundos"    +   "\n"    +   "Comparacoes: " + comp    +   "\n" + "Movimentacoes: " + mov);///
+        //System.out.println(duracao + " milisegundos"    +   "\n"    +   "Comparacoes: " + comp    +   "\n" + "Movimentacoes: " + mov);///
         
 		
 
