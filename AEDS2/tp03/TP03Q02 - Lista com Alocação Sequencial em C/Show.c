@@ -7,8 +7,8 @@
 #include <time.h>
 // ---------------------------------------------------------------------------------------------------- //
 //Variaveis globais
-#define FILE_PATH "/home/felipe/PUCMinas/AEDS2/tp02/Q02/disneyplus.csv"
-//#define FILE_PATH "/tmp/disneyplus.csv"
+//#define FILE_PATH "/home/felipe/PUCMinas/AEDS2/tp02/Q02/disneyplus.csv"
+#define FILE_PATH "/tmp/disneyplus.csv"
 #define bool      short
 #define true      1
 #define false     0
@@ -27,7 +27,7 @@ typedef struct Show{
     char listed_in[100][100];   
 } Show;
 Show show[1368];
-Show lista[1368];
+//Show lista[1368];
 int con=0, mov=0, comp=0;
 // ---------------------------------------------------------------------------------------------------- //
 // ---------------------------------------------------------------------------------------------------- //
@@ -321,74 +321,45 @@ Show TrasInObj(char* linha) {
 
 
 //+-+-+--+-+-+-+ Função para imprimir as series desejadas +-+-+--+-+-+-+
-void printShow(Show *s, char *id) {
-    for(int t=0; t<1368;t++){
-        if (strcmp(s[t].show_id, id) == 0) {
-            printf("=> %s", s[t].show_id);
-            printf(" ## %s", s[t].title);
-            printf(" ## %s", s[t].type);
-            printf(" ## %s", s[t].director);
-        
-            // Imprimir elenco (array de strings)
-            printf(" ## [");
-            if(strlen(s[t].cast[0]) > 0) {
-                if(strcmp(s[t].cast[0], "NaN") == 0){
-                    printf("NaN");
-                }else{
-                    for(int i = 0; i < 100 && strlen(s[t].cast[i]) > 0; i++) {
-                        if(i > 0) {
-                            printf(", "); 
-                        }
-                        printf("%s", s[t].cast[i]);
-                    }
-                }
-                
-            } else {
-                printf("NaN");
-            }
-            printf("]");
-        
-            printf(" ## %s", s[t].country);
-        
-            // Imprimir data formatada
-            printf(" ## ");
-            if(s[t].date_added.tm_year != 0) { // Ano 0 indica não inicializado
-                char date_buffer[50];
-                strftime(date_buffer, sizeof(date_buffer), "%B %d, %Y", &s[t].date_added);
-                printf(" %s", date_buffer);
-            } else {
-                printf("N/A");
-            }
-        
-            printf(" ## %d", s[t].release_year);
-            printf(" ## %s", s[t].rating);
-            printf(" ## %s", s[t].duration);
-        
-            // Imprimir categorias (array de strings)
-            printf(" ## [");
-            if(strlen(s[t].listed_in[0]) > 0) {
-                if(strcmp(s[t].listed_in[0], "NaN")==0){
-                    printf("NaN");
-                }else{
-                    for(int i = 0; i < 100 && strlen(s[t].listed_in[i]) > 0; i++) {
-                        if(i > 0) {
-                            printf(", "); 
-                        }
-                        printf("%s", s[t].listed_in[i]);
-                    }
-                }
-               
-            } else {
-                printf("NaN");
-            }
-            printf("]");
-        
-            printf(" ##\n");
+void imprimir(Show show) {
+	int i = 0;
+	printf("=> %s ## ", show.show_id);
+	printf("%s ## ", show.title);
+	printf("%s ## ", show.type);
+	printf("%s ## ", show.director);
+	printf("[");
+	while (show.cast[i][0] != '\0') {
+		printf("%s", show.cast[i]);
+		if (show.cast[i + 1][0] != '\0') {
+			printf(", ");
+		}
+		i++;
+	}
+	printf("] ## ");
+	printf("%s ## ", show.country);
 
+        if(show.date_added.tm_year != 0) { // Ano 0 indica não inicializado
+            char date_buffer[50];
+            strftime(date_buffer, sizeof(date_buffer), "%B %d, %Y", &show.date_added);
+            printf(" %s", date_buffer);
+        } else {
+           printf("N/A");
         }
-    }
-       
-    
+    printf(" ## ");
+	printf("%d ## ", show.release_year);
+	printf("%s ## ", show.rating);
+	printf("%s ## ", show.duration);
+	printf("[");
+	i = 0;
+	while (show.listed_in[i][0] != '\0') {
+		printf("%s", show.listed_in[i]);
+		if (show.listed_in[i + 1][0] != '\0') {
+			printf(", ");
+		}
+		i++;
+	}
+	printf("] ##");
+	printf("\n");
 }
 
 //+-+-+--+-+-+-+ Função ler arquivo csv +-+-+--+-+-+-+
@@ -467,175 +438,96 @@ void swapShows(Show *a, Show *b) {
     mov=mov+3; 
 }
 
-//+-+-+--+-+-+-+ Algortimo de Seleção(title) +-+-+--+-+-+-+
-void selecaoRecursivo(Show *array, int n, int index) {
-    // Caso base: quando o índice alcança o penúltimo elemento
-    if (index >= n - 1) {
-        return;
-    }
-    
-    // Encontrar o índice do menor elemento no subarray não ordenado
-    int menor = index;
-    for (int i = index + 1; i < n; i++) {
-        comp++; 
-        if (strcmp(array[i].title, array[menor].title) < 0) {
-            menor = i;
-        }
-    }
-    
-    // Trocar o menor elemento com o primeiro do subarray não ordenado
-    if (menor != index) {
-        swapShows(&array[menor], &array[index]);
-    }
-    
-    // Chamada recursiva para o próximo elemento
-    selecaoRecursivo(array, n, index + 1);
-}
+
 
 //+-+-+--+-+-+-+-+-+-+--+-+-+-+  Implementação da lista +-+-+--+-+-+-+-+-+-+--+-+-+-+ 
-typedef struct Lista{
-    Show array[1000];
+typedef struct ListaSeq{
+    int max;
+    Show *array;
     int n;
-}Lista;
+}ListaSeq;
 
-void start(Lista *lista){
+ListaSeq* newListaSeq(int max){
+    ListaSeq *lista = (ListaSeq*) malloc(sizeof(ListaSeq));
+    lista->max = max;
     lista->n = 0;
- }
- 
- 
- 
- void inserirInicio(Show x, Lista *lista) {
-    int i;
- 
-    //validar insercao
-    if(lista->n >= 1000){
-       printf("Erro ao inserir!");
-       exit(1);
-    } 
- 
-    //levar elementos para o fim do array
-    for(i = lista->n; i > 0; i--){
-       lista->array[i] = lista->array[i-1];
-    }
- 
-    lista->array[0] = x;
-    lista->n++;
- }
- 
- 
- 
- void inserirFim(Show x, Lista *lista) {
- 
-    //validar insercao
-    if(lista->n >= 1000){
-       printf("Erro ao inserir!");
-       exit(1);
-    }
- 
-    lista->array[lista->n] = x;
-    lista->n++;
- }
- 
- 
- 
- void inserir(Show x, int pos, Lista *lista) {
-    int i;
- 
-    //validar insercao
-    if(lista->n >= 1000 || pos < 0 || pos > lista->n){
-       printf("Erro ao inserir!");
-       exit(1);
-    }
- 
-    //levar elementos para o fim do array
-    for(i = lista->n; i > pos; i--){
-       lista->array[i] = lista->array[i-1];
-    }
- 
-    lista->array[pos] = x;
-    lista->n++;
- }
- 
- 
- 
- Show removerInicio(Lista *lista) {
-    int i;
-    Show resp;
- 
-    //validar remocao
-    if (lista->n == 0) {
-       printf("Erro ao remover!");
-       exit(1);
-    }
- 
-    resp = lista->array[0];
-    lista->n--;
- 
-    for(i = 0; i < lista->n; i++){
-        lista->array[i] = lista->array[i+1];
-    }
- 
-    return resp;
- }
- 
- 
- 
- Show removerFim(Lista *lista) {
- 
-    //validar remocao
-    if (lista->n == 0) {
-       printf("Erro ao remover!");
-       exit(1);
-    }
-    lista->n--;
-    return lista->array[lista->n];
- }
- 
- 
- 
- Show remover(int pos, Lista *lista) {
-    int i;
-    Show resp;
- 
-    //validar remocao
-    if (lista->n == 0 || pos < 0 || pos >= lista->n) {
-       printf("Erro ao remover!");
-       exit(1);
-    }
- 
-    resp = lista->array[pos];
-    lista->n--;
- 
-    for(i = pos; i < lista->n; i++){
-        lista->array[i] = lista->array[i+1];
-    }
- 
-    return resp;
- }
- 
- 
+    lista->array = (Show*)malloc(max*sizeof(Show));
+    return lista;
+}
 
- /*void mostrar (Lista *lista){
-    int i;
- 
-    printf("[ ");
- 
-    for(i = 0; i < lista->n; i++){
-       printf("%d ", lista->array[i]);
+void delListaSeq(ListaSeq* lista){
+    if(lista != NULL){
+        free(lista->array);
+        free(lista);
     }
- 
-    printf("]\n");
- }*/
- 
- 
- 
- bool pesquisarPorId(char *id, Lista *lista) {
-    for (int i = 0; i < lista->n; i++) {
-        if (strcmp(lista->array[i].show_id, id) == 0) {
-            return true;
-        }
+}
+    
+void inserirInicio(ListaSeq* lista, Show elem){
+    if(lista->n >= lista->max){
+        printf("Erro!");
+        return; 
     }
-    return false;
+    for(int i = lista->n; i > 0; i--){
+        lista->array[i] = lista->array[i-1];
+    }
+    lista->array[0] = elem;
+    lista->n++;
+}    
+
+void inserirFim(ListaSeq* lista, Show elem){
+    if(lista->n >= lista->max){
+        printf("Erro!");
+        return; 
+    }
+    lista->array[lista->n++] = elem;
+}
+
+Show removerInicio(ListaSeq* lista){
+    if(lista->n == 0){
+        printf("Erro!");
+        return show_newEmpty();
+    }
+    Show x = lista->array[0];
+    for(int i = 0; i < lista->n; i++){
+        lista->array[i] = lista->array[i+1];
+    }
+    lista->n--;
+    return x;
+}
+
+Show removerFim(ListaSeq* lista){
+    if(lista->n == 0){
+        printf("Erro!");
+        return show_newEmpty();
+    }
+    lista->n--;
+    Show x = lista->array[lista->n];
+    return x;
+}
+
+void inserir(ListaSeq* lista, Show elem, int pos){
+    if(lista->n >= lista->max || pos < 0 || pos > lista->n){
+        printf("Erro!");
+        return;
+    }
+    for(int i = lista->n; i > pos; i--){
+        lista->array[i] = lista->array[i-1];
+    }
+    lista->array[pos] = elem;
+    lista->n++;
+}
+
+Show remover(ListaSeq* lista, int pos){
+    if(lista->n >= lista->max || pos < 0 || pos >= lista->n){
+        printf("Erro!");
+        return show_newEmpty();
+    }
+    Show x = lista->array[pos];
+    for(int i = pos; i < lista->n-1; i++){
+        lista->array[i] = lista->array[i+1];
+    }
+    lista->n--;
+    return x;
 }
 
 Show procurar(Show* show, int tam, char id[]){
@@ -648,37 +540,30 @@ Show procurar(Show* show, int tam, char id[]){
     return show_newEmpty();
 }
 
-Show pegar(Lista* lista, int pos){
+Show pegar(ListaSeq* lista, int pos){
     return lista->array[pos];
 }
-//+-+-+--+-+-+-+-+-+-+--+-+-+-+  Função main +-+-+--+-+-+-+-+-+-+--+-+-+-+ 
+
 int main() {
-    Ler();
-    char id[10];
-    char titulo[100];
-    int tamanhoLista = 0;
-    Lista *listaSeq;
+	Ler();
+	int quant = 1368;
+	char id[11];
+	
+	ListaSeq* lista = newListaSeq(1000);
 
+	scanf("%[^\n]", id);
+	getchar();
+	while (strcmp(id, "FIM") != 0) {
+		for (int i = 0; i < quant; i++) {
+			if (strcmp(id, show[i].show_id) == 0) {
+				inserirFim(lista, show[i]);
+			}
+		}
+		scanf("%[^\n]", id);
+		getchar();
+	}
 
-    
-    // Loop para criar o sub-array 
-    scanf("%s", id);
-    id[strlen(id)] = '\0';
-    
-    while (strcmp(id, "FIM") != 0) {
-        for(int i = 0; i < 1368; i++) {
-            if (strcmp(show[i].show_id, id) == 0) {
-                lista[tamanhoLista] = show_clone(&show[i]);
-                tamanhoLista++;
-                break;
-            }
-        }
-        scanf("%s", id);
-        id[strlen(id)] = '\0';
-    }
-    
-    
-    Lista* listaRemovidos;
+	ListaSeq* listaRemovidos = newListaSeq(1000);
 	int n;
 	scanf("%d", &n);
 	for(int i = 0; i < n; i++) {
@@ -688,23 +573,23 @@ int main() {
         
 		if(strcmp(comando, "II")== 0) {
             scanf(" %s", id);
-            inserirInicio(procurar(lista, 1368, id),listaSeq);
+            inserirInicio(lista, procurar(show, quant, id));
 		} else if(strcmp(comando, "IF") == 0) {
             scanf(" %s", id);
-            inserirFim(procurar(lista, 1368, id), listaSeq);
+            inserirFim(lista, procurar(show, quant, id));
 		} else if(strcmp(comando, "I*") == 0) {
             scanf("%d %s", &pos, id);
-            inserir(procurar(lista, 1368, id), pos, listaSeq);
+            inserir(lista, procurar(show, quant, id), pos);
 		} else if(strcmp(comando, "RI") == 0) {
-            Show removido = removerInicio(listaSeq);
-            inserirFim(removido,listaRemovidos);
+            Show removido = removerInicio(lista);
+            inserirFim(listaRemovidos, removido);
 		} else if(strcmp(comando, "RF") == 0) {
 		    Show removido = removerFim(lista);
-            inserirFim(removido,listaRemovidos);
+            inserirFim(listaRemovidos, removido);
 		} else if(strcmp(comando, "R*") == 0) {
             scanf("%d", &pos);
             Show removido = remover(lista, pos);
-            inserirFim(removido,listaRemovidos);
+            inserirFim(listaRemovidos, removido);
 		}
 	}
 	
@@ -713,12 +598,12 @@ int main() {
         printf("(R) %s\n", item.title);
     }
     
-    for(int i = 0; i < listaSeq->n; i++){
+    for(int i = 0; i < lista->n; i++){
         imprimir(pegar(lista, i));
     }
-	free(show);
-	delListaLinear(lista);
-	delListaLinear(listaRemovidos);
+
+	delListaSeq(lista);
+	delListaSeq(listaRemovidos);
 	return 0;
 }
    
