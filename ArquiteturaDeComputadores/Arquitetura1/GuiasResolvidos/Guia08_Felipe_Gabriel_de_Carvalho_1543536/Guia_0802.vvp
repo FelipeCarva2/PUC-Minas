@@ -1,0 +1,368 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000026bb4afab50 .scope module, "teste_subtrator6bits" "teste_subtrator6bits" 2 67;
+ .timescale 0 0;
+v0000026bb4b6f4f0_0 .var "a", 5 0;
+v0000026bb4b6f590_0 .var "b", 5 0;
+v0000026bb4b70030_0 .net "diferenca", 5 0, L_0000026bb4b77c60;  1 drivers
+v0000026bb4b705d0_0 .net "emprestaFinal", 0 0, L_0000026bb4b74450;  1 drivers
+S_0000026bb4aface0 .scope module, "SUBTRATOR" "subtrator6bits" 2 74, 2 45 0, S_0000026bb4afab50;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 6 "diferenca";
+    .port_info 1 /OUTPUT 1 "emprestaFinal";
+    .port_info 2 /INPUT 6 "a";
+    .port_info 3 /INPUT 6 "b";
+    .port_info 4 /INPUT 1 "emprestaInicial";
+o0000026bb4b15b48 .functor BUFZ 1, C4<z>; HiZ drive
+; Elide local net with no drivers, v0000026bb4b70210_0 name=_ivl_59
+v0000026bb4b6f450_0 .net "a", 5 0, v0000026bb4b6f4f0_0;  1 drivers
+v0000026bb4b6fc70_0 .net "b", 5 0, v0000026bb4b6f590_0;  1 drivers
+v0000026bb4b6f810_0 .net "diferenca", 5 0, L_0000026bb4b77c60;  alias, 1 drivers
+v0000026bb4b70d50_0 .net "empresta", 5 0, L_0000026bb4b77260;  1 drivers
+v0000026bb4b6fb30_0 .net "emprestaFinal", 0 0, L_0000026bb4b74450;  alias, 1 drivers
+L_0000026bb4be0088 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000026bb4b707b0_0 .net "emprestaInicial", 0 0, L_0000026bb4be0088;  1 drivers
+L_0000026bb4b708f0 .part v0000026bb4b6f4f0_0, 0, 1;
+L_0000026bb4b6f6d0 .part v0000026bb4b6f590_0, 0, 1;
+L_0000026bb4b6f9f0 .part v0000026bb4b6f4f0_0, 1, 1;
+L_0000026bb4b6f770 .part v0000026bb4b6f590_0, 1, 1;
+L_0000026bb4b6f950 .part L_0000026bb4b77260, 0, 1;
+L_0000026bb4b6fdb0 .part v0000026bb4b6f4f0_0, 2, 1;
+L_0000026bb4b70ad0 .part v0000026bb4b6f590_0, 2, 1;
+L_0000026bb4b6fbd0 .part L_0000026bb4b77260, 1, 1;
+L_0000026bb4b6fe50 .part v0000026bb4b6f4f0_0, 3, 1;
+L_0000026bb4b700d0 .part v0000026bb4b6f590_0, 3, 1;
+L_0000026bb4b70170 .part L_0000026bb4b77260, 2, 1;
+L_0000026bb4b76900 .part v0000026bb4b6f4f0_0, 4, 1;
+L_0000026bb4b76180 .part v0000026bb4b6f590_0, 4, 1;
+L_0000026bb4b77800 .part L_0000026bb4b77260, 3, 1;
+LS_0000026bb4b77c60_0_0 .concat8 [ 1 1 1 1], L_0000026bb4b08180, L_0000026bb4b07a80, L_0000026bb4b07bd0, L_0000026bb4b741b0;
+LS_0000026bb4b77c60_0_4 .concat8 [ 1 1 0 0], L_0000026bb4b74c30, L_0000026bb4b743e0;
+L_0000026bb4b77c60 .concat8 [ 4 2 0 0], LS_0000026bb4b77c60_0_0, LS_0000026bb4b77c60_0_4;
+L_0000026bb4b778a0 .part v0000026bb4b6f4f0_0, 5, 1;
+L_0000026bb4b776c0 .part v0000026bb4b6f590_0, 5, 1;
+L_0000026bb4b77a80 .part L_0000026bb4b77260, 4, 1;
+LS_0000026bb4b77260_0_0 .concat [ 1 1 1 1], L_0000026bb4b081f0, L_0000026bb4b082d0, L_0000026bb4b07f50, L_0000026bb4b744c0;
+LS_0000026bb4b77260_0_4 .concat [ 1 1 0 0], L_0000026bb4b74370, o0000026bb4b15b48;
+L_0000026bb4b77260 .concat [ 4 2 0 0], LS_0000026bb4b77260_0_0, LS_0000026bb4b77260_0_4;
+S_0000026bb4af5860 .scope module, "SUB0" "subtratorCompleto" 2 55, 2 24 0, S_0000026bb4aface0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "emprestaSaida";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "emprestaEntrada";
+L_0000026bb4b081f0 .functor OR 1, L_0000026bb4b07e70, L_0000026bb4b083b0, C4<0>, C4<0>;
+v0000026bb4b09b60_0 .net "a", 0 0, L_0000026bb4b708f0;  1 drivers
+v0000026bb4b098e0_0 .net "b", 0 0, L_0000026bb4b6f6d0;  1 drivers
+v0000026bb4b09200_0 .net "diferenca", 0 0, L_0000026bb4b08180;  1 drivers
+v0000026bb4b089e0_0 .net "diferencaParcial", 0 0, L_0000026bb4b07cb0;  1 drivers
+v0000026bb4b09480_0 .net "emprestaEntrada", 0 0, L_0000026bb4be0088;  alias, 1 drivers
+v0000026bb4b0a1a0_0 .net "emprestaParcial1", 0 0, L_0000026bb4b07e70;  1 drivers
+v0000026bb4b08a80_0 .net "emprestaParcial2", 0 0, L_0000026bb4b083b0;  1 drivers
+v0000026bb4b09980_0 .net "emprestaSaida", 0 0, L_0000026bb4b081f0;  1 drivers
+S_0000026bb4af59f0 .scope module, "MS1" "meioSubtrator" 2 36, 2 10 0, S_0000026bb4af5860;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "empresta";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026bb4b07cb0 .functor XOR 1, L_0000026bb4b708f0, L_0000026bb4b6f6d0, C4<0>, C4<0>;
+L_0000026bb4b07e70 .functor AND 1, L_0000026bb4b07d90, L_0000026bb4b6f6d0, C4<1>, C4<1>;
+L_0000026bb4b07d90 .functor NOT 1, L_0000026bb4b708f0, C4<0>, C4<0>, C4<0>;
+v0000026bb4b09520_0 .net *"_ivl_0", 0 0, L_0000026bb4b07d90;  1 drivers
+v0000026bb4b09840_0 .net "a", 0 0, L_0000026bb4b708f0;  alias, 1 drivers
+v0000026bb4b09160_0 .net "b", 0 0, L_0000026bb4b6f6d0;  alias, 1 drivers
+v0000026bb4b093e0_0 .net "diferenca", 0 0, L_0000026bb4b07cb0;  alias, 1 drivers
+v0000026bb4b097a0_0 .net "empresta", 0 0, L_0000026bb4b07e70;  alias, 1 drivers
+S_0000026bb4ac2720 .scope module, "MS2" "meioSubtrator" 2 37, 2 10 0, S_0000026bb4af5860;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "empresta";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026bb4b08180 .functor XOR 1, L_0000026bb4b07cb0, L_0000026bb4be0088, C4<0>, C4<0>;
+L_0000026bb4b083b0 .functor AND 1, L_0000026bb4b07a10, L_0000026bb4be0088, C4<1>, C4<1>;
+L_0000026bb4b07a10 .functor NOT 1, L_0000026bb4b07cb0, C4<0>, C4<0>, C4<0>;
+v0000026bb4b092a0_0 .net *"_ivl_0", 0 0, L_0000026bb4b07a10;  1 drivers
+v0000026bb4b09fc0_0 .net "a", 0 0, L_0000026bb4b07cb0;  alias, 1 drivers
+v0000026bb4b08940_0 .net "b", 0 0, L_0000026bb4be0088;  alias, 1 drivers
+v0000026bb4b0a240_0 .net "diferenca", 0 0, L_0000026bb4b08180;  alias, 1 drivers
+v0000026bb4b09ca0_0 .net "empresta", 0 0, L_0000026bb4b083b0;  alias, 1 drivers
+S_0000026bb4ac28b0 .scope module, "SUB1" "subtratorCompleto" 2 56, 2 24 0, S_0000026bb4aface0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "emprestaSaida";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "emprestaEntrada";
+L_0000026bb4b082d0 .functor OR 1, L_0000026bb4b07ee0, L_0000026bb4b08340, C4<0>, C4<0>;
+v0000026bb4b03ae0_0 .net "a", 0 0, L_0000026bb4b6f9f0;  1 drivers
+v0000026bb4b03c20_0 .net "b", 0 0, L_0000026bb4b6f770;  1 drivers
+v0000026bb4b6bd50_0 .net "diferenca", 0 0, L_0000026bb4b07a80;  1 drivers
+v0000026bb4b6b350_0 .net "diferencaParcial", 0 0, L_0000026bb4b07fc0;  1 drivers
+v0000026bb4b6bc10_0 .net "emprestaEntrada", 0 0, L_0000026bb4b6f950;  1 drivers
+v0000026bb4b6c070_0 .net "emprestaParcial1", 0 0, L_0000026bb4b07ee0;  1 drivers
+v0000026bb4b6ce30_0 .net "emprestaParcial2", 0 0, L_0000026bb4b08340;  1 drivers
+v0000026bb4b6c930_0 .net "emprestaSaida", 0 0, L_0000026bb4b082d0;  1 drivers
+S_0000026bb4b0f230 .scope module, "MS1" "meioSubtrator" 2 36, 2 10 0, S_0000026bb4ac28b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "empresta";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026bb4b07fc0 .functor XOR 1, L_0000026bb4b6f9f0, L_0000026bb4b6f770, C4<0>, C4<0>;
+L_0000026bb4b07ee0 .functor AND 1, L_0000026bb4b08810, L_0000026bb4b6f770, C4<1>, C4<1>;
+L_0000026bb4b08810 .functor NOT 1, L_0000026bb4b6f9f0, C4<0>, C4<0>, C4<0>;
+v0000026bb4b09f20_0 .net *"_ivl_0", 0 0, L_0000026bb4b08810;  1 drivers
+v0000026bb4b09ac0_0 .net "a", 0 0, L_0000026bb4b6f9f0;  alias, 1 drivers
+v0000026bb4b0a100_0 .net "b", 0 0, L_0000026bb4b6f770;  alias, 1 drivers
+v0000026bb4b09c00_0 .net "diferenca", 0 0, L_0000026bb4b07fc0;  alias, 1 drivers
+v0000026bb4b0a4c0_0 .net "empresta", 0 0, L_0000026bb4b07ee0;  alias, 1 drivers
+S_0000026bb4b0f3c0 .scope module, "MS2" "meioSubtrator" 2 37, 2 10 0, S_0000026bb4ac28b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "empresta";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026bb4b07a80 .functor XOR 1, L_0000026bb4b07fc0, L_0000026bb4b6f950, C4<0>, C4<0>;
+L_0000026bb4b08340 .functor AND 1, L_0000026bb4b08260, L_0000026bb4b6f950, C4<1>, C4<1>;
+L_0000026bb4b08260 .functor NOT 1, L_0000026bb4b07fc0, C4<0>, C4<0>, C4<0>;
+v0000026bb4b08b20_0 .net *"_ivl_0", 0 0, L_0000026bb4b08260;  1 drivers
+v0000026bb4b08d00_0 .net "a", 0 0, L_0000026bb4b07fc0;  alias, 1 drivers
+v0000026bb4b08da0_0 .net "b", 0 0, L_0000026bb4b6f950;  alias, 1 drivers
+v0000026bb4b04760_0 .net "diferenca", 0 0, L_0000026bb4b07a80;  alias, 1 drivers
+v0000026bb4b039a0_0 .net "empresta", 0 0, L_0000026bb4b08340;  alias, 1 drivers
+S_0000026bb4b0f550 .scope module, "SUB2" "subtratorCompleto" 2 57, 2 24 0, S_0000026bb4aface0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "emprestaSaida";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "emprestaEntrada";
+L_0000026bb4b07f50 .functor OR 1, L_0000026bb4b08030, L_0000026bb4b07af0, C4<0>, C4<0>;
+v0000026bb4b6c7f0_0 .net "a", 0 0, L_0000026bb4b6fdb0;  1 drivers
+v0000026bb4b6ba30_0 .net "b", 0 0, L_0000026bb4b70ad0;  1 drivers
+v0000026bb4b6d0b0_0 .net "diferenca", 0 0, L_0000026bb4b07bd0;  1 drivers
+v0000026bb4b6c6b0_0 .net "diferencaParcial", 0 0, L_0000026bb4b08730;  1 drivers
+v0000026bb4b6c430_0 .net "emprestaEntrada", 0 0, L_0000026bb4b6fbd0;  1 drivers
+v0000026bb4b6b3f0_0 .net "emprestaParcial1", 0 0, L_0000026bb4b08030;  1 drivers
+v0000026bb4b6b710_0 .net "emprestaParcial2", 0 0, L_0000026bb4b07af0;  1 drivers
+v0000026bb4b6be90_0 .net "emprestaSaida", 0 0, L_0000026bb4b07f50;  1 drivers
+S_0000026bb4b6d270 .scope module, "MS1" "meioSubtrator" 2 36, 2 10 0, S_0000026bb4b0f550;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "empresta";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026bb4b08730 .functor XOR 1, L_0000026bb4b6fdb0, L_0000026bb4b70ad0, C4<0>, C4<0>;
+L_0000026bb4b08030 .functor AND 1, L_0000026bb4b07b60, L_0000026bb4b70ad0, C4<1>, C4<1>;
+L_0000026bb4b07b60 .functor NOT 1, L_0000026bb4b6fdb0, C4<0>, C4<0>, C4<0>;
+v0000026bb4b6c750_0 .net *"_ivl_0", 0 0, L_0000026bb4b07b60;  1 drivers
+v0000026bb4b6c570_0 .net "a", 0 0, L_0000026bb4b6fdb0;  alias, 1 drivers
+v0000026bb4b6bb70_0 .net "b", 0 0, L_0000026bb4b70ad0;  alias, 1 drivers
+v0000026bb4b6c390_0 .net "diferenca", 0 0, L_0000026bb4b08730;  alias, 1 drivers
+v0000026bb4b6cc50_0 .net "empresta", 0 0, L_0000026bb4b08030;  alias, 1 drivers
+S_0000026bb4b6d400 .scope module, "MS2" "meioSubtrator" 2 37, 2 10 0, S_0000026bb4b0f550;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "empresta";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026bb4b07bd0 .functor XOR 1, L_0000026bb4b08730, L_0000026bb4b6fbd0, C4<0>, C4<0>;
+L_0000026bb4b07af0 .functor AND 1, L_0000026bb4b087a0, L_0000026bb4b6fbd0, C4<1>, C4<1>;
+L_0000026bb4b087a0 .functor NOT 1, L_0000026bb4b08730, C4<0>, C4<0>, C4<0>;
+v0000026bb4b6c9d0_0 .net *"_ivl_0", 0 0, L_0000026bb4b087a0;  1 drivers
+v0000026bb4b6ccf0_0 .net "a", 0 0, L_0000026bb4b08730;  alias, 1 drivers
+v0000026bb4b6cf70_0 .net "b", 0 0, L_0000026bb4b6fbd0;  alias, 1 drivers
+v0000026bb4b6c890_0 .net "diferenca", 0 0, L_0000026bb4b07bd0;  alias, 1 drivers
+v0000026bb4b6d150_0 .net "empresta", 0 0, L_0000026bb4b07af0;  alias, 1 drivers
+S_0000026bb4b6d590 .scope module, "SUB3" "subtratorCompleto" 2 58, 2 24 0, S_0000026bb4aface0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "emprestaSaida";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "emprestaEntrada";
+L_0000026bb4b744c0 .functor OR 1, L_0000026bb4b07d20, L_0000026bb4b74530, C4<0>, C4<0>;
+v0000026bb4b6c2f0_0 .net "a", 0 0, L_0000026bb4b6fe50;  1 drivers
+v0000026bb4b6c610_0 .net "b", 0 0, L_0000026bb4b700d0;  1 drivers
+v0000026bb4b6b5d0_0 .net "diferenca", 0 0, L_0000026bb4b741b0;  1 drivers
+v0000026bb4b6b490_0 .net "diferencaParcial", 0 0, L_0000026bb4b07c40;  1 drivers
+v0000026bb4b6d010_0 .net "emprestaEntrada", 0 0, L_0000026bb4b70170;  1 drivers
+v0000026bb4b6ced0_0 .net "emprestaParcial1", 0 0, L_0000026bb4b07d20;  1 drivers
+v0000026bb4b6b2b0_0 .net "emprestaParcial2", 0 0, L_0000026bb4b74530;  1 drivers
+v0000026bb4b6b530_0 .net "emprestaSaida", 0 0, L_0000026bb4b744c0;  1 drivers
+S_0000026bb4b6d720 .scope module, "MS1" "meioSubtrator" 2 36, 2 10 0, S_0000026bb4b6d590;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "empresta";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026bb4b07c40 .functor XOR 1, L_0000026bb4b6fe50, L_0000026bb4b700d0, C4<0>, C4<0>;
+L_0000026bb4b07d20 .functor AND 1, L_0000026bb4b74760, L_0000026bb4b700d0, C4<1>, C4<1>;
+L_0000026bb4b74760 .functor NOT 1, L_0000026bb4b6fe50, C4<0>, C4<0>, C4<0>;
+v0000026bb4b6c110_0 .net *"_ivl_0", 0 0, L_0000026bb4b74760;  1 drivers
+v0000026bb4b6bfd0_0 .net "a", 0 0, L_0000026bb4b6fe50;  alias, 1 drivers
+v0000026bb4b6ca70_0 .net "b", 0 0, L_0000026bb4b700d0;  alias, 1 drivers
+v0000026bb4b6c1b0_0 .net "diferenca", 0 0, L_0000026bb4b07c40;  alias, 1 drivers
+v0000026bb4b6bdf0_0 .net "empresta", 0 0, L_0000026bb4b07d20;  alias, 1 drivers
+S_0000026bb4b6d8b0 .scope module, "MS2" "meioSubtrator" 2 37, 2 10 0, S_0000026bb4b6d590;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "empresta";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026bb4b741b0 .functor XOR 1, L_0000026bb4b07c40, L_0000026bb4b70170, C4<0>, C4<0>;
+L_0000026bb4b74530 .functor AND 1, L_0000026bb4b745a0, L_0000026bb4b70170, C4<1>, C4<1>;
+L_0000026bb4b745a0 .functor NOT 1, L_0000026bb4b07c40, C4<0>, C4<0>, C4<0>;
+v0000026bb4b6bf30_0 .net *"_ivl_0", 0 0, L_0000026bb4b745a0;  1 drivers
+v0000026bb4b6cb10_0 .net "a", 0 0, L_0000026bb4b07c40;  alias, 1 drivers
+v0000026bb4b6c250_0 .net "b", 0 0, L_0000026bb4b70170;  alias, 1 drivers
+v0000026bb4b6cd90_0 .net "diferenca", 0 0, L_0000026bb4b741b0;  alias, 1 drivers
+v0000026bb4b6cbb0_0 .net "empresta", 0 0, L_0000026bb4b74530;  alias, 1 drivers
+S_0000026bb4b6da40 .scope module, "SUB4" "subtratorCompleto" 2 59, 2 24 0, S_0000026bb4aface0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "emprestaSaida";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "emprestaEntrada";
+L_0000026bb4b74370 .functor OR 1, L_0000026bb4b74290, L_0000026bb4b74a70, C4<0>, C4<0>;
+v0000026bb4b70cb0_0 .net "a", 0 0, L_0000026bb4b76900;  1 drivers
+v0000026bb4b70b70_0 .net "b", 0 0, L_0000026bb4b76180;  1 drivers
+v0000026bb4b70a30_0 .net "diferenca", 0 0, L_0000026bb4b74c30;  1 drivers
+v0000026bb4b6f630_0 .net "diferencaParcial", 0 0, L_0000026bb4b74a00;  1 drivers
+v0000026bb4b703f0_0 .net "emprestaEntrada", 0 0, L_0000026bb4b77800;  1 drivers
+v0000026bb4b70c10_0 .net "emprestaParcial1", 0 0, L_0000026bb4b74290;  1 drivers
+v0000026bb4b6fa90_0 .net "emprestaParcial2", 0 0, L_0000026bb4b74a70;  1 drivers
+v0000026bb4b6eff0_0 .net "emprestaSaida", 0 0, L_0000026bb4b74370;  1 drivers
+S_0000026bb4b6dbd0 .scope module, "MS1" "meioSubtrator" 2 36, 2 10 0, S_0000026bb4b6da40;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "empresta";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026bb4b74a00 .functor XOR 1, L_0000026bb4b76900, L_0000026bb4b76180, C4<0>, C4<0>;
+L_0000026bb4b74290 .functor AND 1, L_0000026bb4b74300, L_0000026bb4b76180, C4<1>, C4<1>;
+L_0000026bb4b74300 .functor NOT 1, L_0000026bb4b76900, C4<0>, C4<0>, C4<0>;
+v0000026bb4b6c4d0_0 .net *"_ivl_0", 0 0, L_0000026bb4b74300;  1 drivers
+v0000026bb4b6bcb0_0 .net "a", 0 0, L_0000026bb4b76900;  alias, 1 drivers
+v0000026bb4b6b670_0 .net "b", 0 0, L_0000026bb4b76180;  alias, 1 drivers
+v0000026bb4b6b7b0_0 .net "diferenca", 0 0, L_0000026bb4b74a00;  alias, 1 drivers
+v0000026bb4b6b850_0 .net "empresta", 0 0, L_0000026bb4b74290;  alias, 1 drivers
+S_0000026bb4b6ed70 .scope module, "MS2" "meioSubtrator" 2 37, 2 10 0, S_0000026bb4b6da40;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "empresta";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026bb4b74c30 .functor XOR 1, L_0000026bb4b74a00, L_0000026bb4b77800, C4<0>, C4<0>;
+L_0000026bb4b74a70 .functor AND 1, L_0000026bb4b74e60, L_0000026bb4b77800, C4<1>, C4<1>;
+L_0000026bb4b74e60 .functor NOT 1, L_0000026bb4b74a00, C4<0>, C4<0>, C4<0>;
+v0000026bb4b6b8f0_0 .net *"_ivl_0", 0 0, L_0000026bb4b74e60;  1 drivers
+v0000026bb4b6b990_0 .net "a", 0 0, L_0000026bb4b74a00;  alias, 1 drivers
+v0000026bb4b6bad0_0 .net "b", 0 0, L_0000026bb4b77800;  alias, 1 drivers
+v0000026bb4b70490_0 .net "diferenca", 0 0, L_0000026bb4b74c30;  alias, 1 drivers
+v0000026bb4b6ff90_0 .net "empresta", 0 0, L_0000026bb4b74a70;  alias, 1 drivers
+S_0000026bb4b718c0 .scope module, "SUB5" "subtratorCompleto" 2 60, 2 24 0, S_0000026bb4aface0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "emprestaSaida";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "emprestaEntrada";
+L_0000026bb4b74450 .functor OR 1, L_0000026bb4b74ae0, L_0000026bb4b748b0, C4<0>, C4<0>;
+v0000026bb4b70530_0 .net "a", 0 0, L_0000026bb4b778a0;  1 drivers
+v0000026bb4b6f3b0_0 .net "b", 0 0, L_0000026bb4b776c0;  1 drivers
+v0000026bb4b70710_0 .net "diferenca", 0 0, L_0000026bb4b743e0;  1 drivers
+v0000026bb4b6fef0_0 .net "diferencaParcial", 0 0, L_0000026bb4b73f80;  1 drivers
+v0000026bb4b70850_0 .net "emprestaEntrada", 0 0, L_0000026bb4b77a80;  1 drivers
+v0000026bb4b702b0_0 .net "emprestaParcial1", 0 0, L_0000026bb4b74ae0;  1 drivers
+v0000026bb4b6ef50_0 .net "emprestaParcial2", 0 0, L_0000026bb4b748b0;  1 drivers
+v0000026bb4b6fd10_0 .net "emprestaSaida", 0 0, L_0000026bb4b74450;  alias, 1 drivers
+S_0000026bb4b71280 .scope module, "MS1" "meioSubtrator" 2 36, 2 10 0, S_0000026bb4b718c0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "empresta";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026bb4b73f80 .functor XOR 1, L_0000026bb4b778a0, L_0000026bb4b776c0, C4<0>, C4<0>;
+L_0000026bb4b74ae0 .functor AND 1, L_0000026bb4b73ff0, L_0000026bb4b776c0, C4<1>, C4<1>;
+L_0000026bb4b73ff0 .functor NOT 1, L_0000026bb4b778a0, C4<0>, C4<0>, C4<0>;
+v0000026bb4b6f090_0 .net *"_ivl_0", 0 0, L_0000026bb4b73ff0;  1 drivers
+v0000026bb4b6f8b0_0 .net "a", 0 0, L_0000026bb4b778a0;  alias, 1 drivers
+v0000026bb4b6f270_0 .net "b", 0 0, L_0000026bb4b776c0;  alias, 1 drivers
+v0000026bb4b70670_0 .net "diferenca", 0 0, L_0000026bb4b73f80;  alias, 1 drivers
+v0000026bb4b70990_0 .net "empresta", 0 0, L_0000026bb4b74ae0;  alias, 1 drivers
+S_0000026bb4b71410 .scope module, "MS2" "meioSubtrator" 2 37, 2 10 0, S_0000026bb4b718c0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "empresta";
+    .port_info 1 /OUTPUT 1 "diferenca";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026bb4b743e0 .functor XOR 1, L_0000026bb4b73f80, L_0000026bb4b77a80, C4<0>, C4<0>;
+L_0000026bb4b748b0 .functor AND 1, L_0000026bb4b74060, L_0000026bb4b77a80, C4<1>, C4<1>;
+L_0000026bb4b74060 .functor NOT 1, L_0000026bb4b73f80, C4<0>, C4<0>, C4<0>;
+v0000026bb4b6f130_0 .net *"_ivl_0", 0 0, L_0000026bb4b74060;  1 drivers
+v0000026bb4b6f1d0_0 .net "a", 0 0, L_0000026bb4b73f80;  alias, 1 drivers
+v0000026bb4b70350_0 .net "b", 0 0, L_0000026bb4b77a80;  alias, 1 drivers
+v0000026bb4b70df0_0 .net "diferenca", 0 0, L_0000026bb4b743e0;  alias, 1 drivers
+v0000026bb4b6f310_0 .net "empresta", 0 0, L_0000026bb4b748b0;  alias, 1 drivers
+S_0000026bb4b710f0 .scope begin, "main" "main" 2 77, 2 77 0, S_0000026bb4afab50;
+ .timescale 0 0;
+    .scope S_0000026bb4afab50;
+T_0 ;
+    %fork t_1, S_0000026bb4b710f0;
+    %jmp t_0;
+    .scope S_0000026bb4b710f0;
+t_1 ;
+    %vpi_call 2 78 "$display", "Guia_0802 - Felipe Gabriel de Carvalho - 1543536" {0 0 0};
+    %vpi_call 2 79 "$display", "Teste do Subtrator de 6 bits" {0 0 0};
+    %pushi/vec4 0, 0, 6;
+    %store/vec4 v0000026bb4b6f4f0_0, 0, 6;
+    %pushi/vec4 0, 0, 6;
+    %store/vec4 v0000026bb4b6f590_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 83 "$display", "%b - %b = %b empresta=%b", v0000026bb4b6f4f0_0, v0000026bb4b6f590_0, v0000026bb4b70030_0, v0000026bb4b705d0_0 {0 0 0};
+    %pushi/vec4 1, 0, 6;
+    %store/vec4 v0000026bb4b6f4f0_0, 0, 6;
+    %pushi/vec4 1, 0, 6;
+    %store/vec4 v0000026bb4b6f590_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 86 "$display", "%b - %b = %b empresta=%b", v0000026bb4b6f4f0_0, v0000026bb4b6f590_0, v0000026bb4b70030_0, v0000026bb4b705d0_0 {0 0 0};
+    %pushi/vec4 21, 0, 6;
+    %store/vec4 v0000026bb4b6f4f0_0, 0, 6;
+    %pushi/vec4 10, 0, 6;
+    %store/vec4 v0000026bb4b6f590_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 89 "$display", "%b - %b = %b empresta=%b", v0000026bb4b6f4f0_0, v0000026bb4b6f590_0, v0000026bb4b70030_0, v0000026bb4b705d0_0 {0 0 0};
+    %pushi/vec4 1, 0, 6;
+    %store/vec4 v0000026bb4b6f4f0_0, 0, 6;
+    %pushi/vec4 2, 0, 6;
+    %store/vec4 v0000026bb4b6f590_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 92 "$display", "%b - %b = %b empresta=%b", v0000026bb4b6f4f0_0, v0000026bb4b6f590_0, v0000026bb4b70030_0, v0000026bb4b705d0_0 {0 0 0};
+    %pushi/vec4 63, 0, 6;
+    %store/vec4 v0000026bb4b6f4f0_0, 0, 6;
+    %pushi/vec4 63, 0, 6;
+    %store/vec4 v0000026bb4b6f590_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 95 "$display", "%b - %b = %b empresta=%b", v0000026bb4b6f4f0_0, v0000026bb4b6f590_0, v0000026bb4b70030_0, v0000026bb4b705d0_0 {0 0 0};
+    %end;
+    .scope S_0000026bb4afab50;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0802.v";

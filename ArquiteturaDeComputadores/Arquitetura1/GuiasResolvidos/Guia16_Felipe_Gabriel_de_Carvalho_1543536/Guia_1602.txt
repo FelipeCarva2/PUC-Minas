@@ -1,0 +1,36 @@
+; Guia_1602.txt
+; Aluno: Felipe Gabriel de Carvalho
+; Matrícula: 1543536
+
+; Divisão inteira de dois números de 8 bits (IDIV)
+; Dados:
+; dado01 em 2050h
+; dado02 em 2051h
+; Quociente em 3050h
+; Resto em 3051h
+
+LXI H, 2050h       ; HL = 2050h
+MOV B, M           ; B = dado01
+INX H              ; HL = 2051h
+MOV C, M           ; C = dado02
+
+MVI D, 00h         ; D = 0 (quociente)
+MVI E, 00h         ; E = 0 (resto)
+
+; Loop de divisão
+DIV_LOOP:
+MOV A, B           ; A = B
+SUB C              ; A = A - C
+MOV B, A           ; B = A (novo dividendo)
+INR D              ; D = D + 1 (incrementa quociente)
+
+MOV A, B           ; A = B
+CMP C              ; Compara A com C
+JC DIV_LOOP        ; Se A < C, continua o loop
+
+; Armazenar resultados
+MOV M, D           ; Quociente em 3050h
+INX H
+MOV M, B           ; Resto em 3051h
+
+HLT                ; Fim do programa

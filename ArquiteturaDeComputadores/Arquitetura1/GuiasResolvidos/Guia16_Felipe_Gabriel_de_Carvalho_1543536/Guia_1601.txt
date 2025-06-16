@@ -1,0 +1,34 @@
+; Guia_1601.txt
+; Aluno: Felipe Gabriel de Carvalho
+; Matrícula: 1543536
+
+; Multiplicação de dois números de 8 bits (IMUL)
+; Dados:
+; dado01 em 2050h
+; dado02 em 2051h
+; Resultado em 3050h (8 bits) e 3051h (8 bits)
+
+LXI H, 2050h       ; HL = 2050h
+MOV B, M           ; B = dado01
+INX H              ; HL = 2051h
+MOV C, M           ; C = dado02
+
+MVI D, 00h         ; D = 0 (parte alta do resultado)
+MVI E, 00h         ; E = 0 (parte baixa do resultado)
+
+; Loop de multiplicação
+MULT_LOOP:
+MOV A, B           ; A = B
+ADD E              ; A = A + E
+MOV E, A           ; E = A
+MOV A, D           ; A = D
+ADC B              ; A = A + B + carry
+MOV D, A           ; D = A
+
+DCR C              ; C = C - 1
+JNZ MULT_LOOP      ; Se C != 0, repete o loop
+
+; Armazenar resultado
+SHLD 3050h         ; (D,E) -> 3050h, 3051h
+
+HLT                ; Fim do programa

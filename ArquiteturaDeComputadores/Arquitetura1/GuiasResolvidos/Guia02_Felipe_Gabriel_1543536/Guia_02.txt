@@ -1,0 +1,119 @@
+Felipe Gabriel de Carvalho - 1543536
+ARQ1_Guia_02
+01.) Fazer as conversões entre as bases indicadas: 
+01a.) manualmente 
+a.)  0,00101  = 0,15625
+
+	0,  0*2^(-1) + 0*2^(-2) + 1*2^(-3) + 0*2^(-4) + 1*2^(-5) = 1*2^(-3) + 1*2^(-5) = 1/8 + 1/32 = 0,15625
+
+b.)  0,01101  = 0,46875
+c.)  0,10001  = 0,53125
+d.)  1,10111  = 1,71875 
+e.) 11,11101  = 3,90625
+
+Todas as questões foram resolvidas seguindo o exemplo da resolução da letra a), em relção a parte inteira fiz pela divisão por 2, pegando o resto de traz para frente, ou simplesmente usando a tabela ASCII.
+
+--------------------------------------------------------------------------------------------------------------------------
+
+02.) Fazer as conversões entre as bases indicadas: 
+ 
+02a.) manualmente 
+ 
+a.)   0,625000  = 0,101
+
+	0,625 × 2 = 1,25	0,25 × 2 = 0,5   	0,5 × 2 = 1,0 
+		   1		          0	  	     	 1	=> 0,101	
+
+b.)   1,750000  = 1,110
+
+	0,75 × 2 = 1,5  	0,5 × 2 = 1,0 
+		  1		         1    => 0,11
+
+c.)   3,125000  = 11,001
+	
+	0,125 × 2 = 0,25 	0,25 × 2 = 0,5 		 0,5 × 2 = 1,0 
+		   0                       0                      1      => 0,001
+
+d.)   4,312500  =  100,0101
+
+	0,3125 × 2 = 0,625 	0,625 × 2 = 1,25 	0,25 × 2 = 0,5 		0,5 × 2 = 1,0 
+		    0			   1			  0			  1    =>  0,0101
+
+e.)   7,875000  = 111,111
+
+	0,875 × 2 = 1,75	 0,75 × 2 = 1,5 	0,5 × 2 = 1,0 
+		   1			   1			  1    => 0,111
+
+-------------------------------------------------------------------------------------------------------------------------
+
+03.) Fazer as conversões de base entre as bases indicadas: 
+DICAS: Para uma mesma base ou usar agrupamentos ou desagrupamentos. 
+Para conferir, compare os valores decimais equivalentes. 
+Completar com zeros, se necessário 
+03a.) manualmente
+a.) 0,011010 = [01][10][10] = 0,122
+b.) 0,100011 = [100][011] = 0,43
+c.) 0,100101 = [1001][0100] = 0,94
+d.) 1,111001 = [001],[111][001] = 1,71
+e.) 1011,1101 = [1011],[1101] = B,D
+
+------------------------------------------------------------------------------------------------------------------------
+
+04.) Fazer as conversões de base entre as bases indicadas: 
+DICAS: Para uma mesma base ou usar agrupamentos ou desagrupamentos. 
+Para conferir, compare os valores decimais equivalentes. 
+04a.) manualmente 
+a.) 0,231(4)    = X(2) 
+b.) 0,5C2(16)  = X(4)  
+c.) 0,735(8)    = X(2) 
+d.) 6,2345(8)   = X(4) DICA: Converter para binário primeiro, depois para a base 4. 
+e.) B,A5E(16)  = X(4)  DICA: Converter diretamente por desagrupamento. 
+
+Respostas:
+a.) [00],[10][11][01] = 0,101101
+b.) [0000],[0101][1100][0010] = [00],[01][01][11][00][00][10] = 0,113002
+c.) [000],[111][011][101] = 0,111011101
+d.) [110],[010][011][100][101] = [01][10],[01][00][11][10][01][01] = 12,103211
+e.) [1011],[1010][0101][1100] = [10][11],[10][10][01][01][11][00] = 223,2213
+
+------------------------------------------------------------------------------------------------------------------------
+
+05.) Fazer as operações indicadas: 
+05a.) manualmente 
+a.) 101,01(2)  + 10,011(2)    = X(2) 
+b.) 1000,001(2)  - 10,01(2)    = X(2)   
+c.) 101,110(2)  * 10,001(2)   = X(2)  
+d.) 10110,01(2)  / 11,011(2)  = X(2) 
+e.) 1101101(2)  % 1011(2)   = X(2)  
+(OBS.: Colocar operandos do mesmo tamanho) 
+(OBS.: Considerar as vírgulas, após operar) 
+(OBS.: Considerar resto de divisão inteira (%)) 
+DICA: Para conferir os resultados, converter para a base 10. 
+
+Respostas:
+a.)
+  101,010
++  10,011
+---------
+  111,101
+
+b.)		Tem que pegar emprestado
+1000,001
+- 10,010
+---------
+   111,011
+
+
+A multiplicação e a divisão não entendi muito bem, confesso que estas precisei de ajuda
+c.) 
+  101110
+× 10001
+---------
+  101110
+ 000000
+101110
+---------
+  101101110
+
+d.) 100,000
+e.)001

@@ -1,0 +1,50 @@
+; Guia_1605.txt
+; Aluno: Felipe Gabriel de Carvalho
+; Matrícula: 1543536
+
+; Conversão de BCD para hexadecimal
+; Dados:
+; BCD em 2050h
+; Resultado hexadecimal em 3050h
+
+LXI H, 2050h       ; HL = 2050h
+MOV A, M           ; A = BCD
+
+; Máscara para extrair nibble alto
+ANI 0F0h           ; A = A & 0F0h
+MOV B, A           ; B = nibble alto
+
+; Máscara para extrair nibble baixo
+MOV A, M           ; A = BCD
+ANI 0Fh            ; A = A & 0Fh
+MOV C, A           ; C = nibble baixo
+
+; Converter nibble alto para hexadecimal
+MVI E, 0Ah         ; E = 10
+MOV A, B           ; A = nibble alto
+CALL MULTIPLY      ; A = A * 10
+MOV D, A           ; D = resultado
+
+; Converter nibble baixo para hexadecimal
+MOV A, C           ; A = nibble baixo
+CALL ADD           ; A = A + D
+
+; Armazenar resultado
+LXI H, 3050h       ; HL = 3050h
+MOV M, A           ; Resultado em 3050h
+
+HLT                ; Fim do programa
+
+; Sub-rotina de multiplicação
+MULTIPLY:
+MVI B, 0Ah         ; B = 10
+MOV D, A           ; D = A
+MOV E, A           ; E = A
+MOV A, D           ; A = D
+ADD E              ; A = A + E
+MOV A, D           ; A = D
+ADD E              ; A = A + E
+MOV A, D           ; A = D
+ADD E              ; A = A +
+::contentReference[oaicite:0]{index=0}
+ 

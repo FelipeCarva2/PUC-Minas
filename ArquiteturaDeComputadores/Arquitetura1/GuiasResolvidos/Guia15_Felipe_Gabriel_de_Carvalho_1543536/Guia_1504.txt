@@ -1,0 +1,33 @@
+// Guia_1504.txt
+// 1543536 - Felipe Gabriel de Carvalho
+//
+// Implementar um programa (Guia_1504.txt) para o processador 8085 para 
+// calcular o resultado da expressão aritmética abaixo, 
+// usando dados com 8 bits.
+// 
+// dado03 = 2 * (dado01 - 3 * dado02)
+
+// Área de código      ; Significado                     // Comentário
+LXI H, dado1           ; HL <- addr(dado1)               // Endereço de dado1
+MOV A, M               ; A <- MEM[dado1]                 // A recebe dado1
+
+INX H                  ; HL <- HL + 1                    // Aponta para dado2
+MOV B, M               ; B <- MEM[dado2]                 // B recebe dado2
+
+MOV C, B               ; C <- B                          // C = dado2
+ADD B                  ; A <- A + B                      // A = dado2 + dado2 (2*dado2)
+ADD C                  ; A <- A + C                      // A = 3*dado2
+
+MOV C, A               ; C <- A                          // C armazena 3*dado2
+
+LXI H, dado1           ; HL <- addr(dado1)               // Recarrega dado1
+MOV A, M               ; A <- MEM[dado1]                 // A recebe dado1 novamente
+SUB C                  ; A <- A - C                      // A = dado1 - 3*dado2
+
+MOV B, A               ; B <- A                          // Armazena resultado parcial
+
+ADD B                  ; A <- A + B                      // A = 2 * (dado1 - 3*dado2)
+
+STA dado3              ; MEM[dado3] <- A                 // Armazena resultado final
+HLT                    ; halt                            // Fim do programa
+

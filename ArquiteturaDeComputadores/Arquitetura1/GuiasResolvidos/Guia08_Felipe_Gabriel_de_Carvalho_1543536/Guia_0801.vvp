@@ -1,0 +1,344 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000026cf80cab50 .scope module, "teste_somador6bits" "teste_somador6bits" 2 67;
+ .timescale 0 0;
+v0000026cf813b9c0_0 .var "a", 5 0;
+v0000026cf813cf00_0 .var "b", 5 0;
+v0000026cf813c280_0 .net "soma", 5 0, L_0000026cf813bb00;  1 drivers
+v0000026cf813ce60_0 .net "vaiUmFinal", 0 0, L_0000026cf8141d10;  1 drivers
+S_0000026cf80cace0 .scope module, "SOMADOR" "somador6bits" 2 74, 2 45 0, S_0000026cf80cab50;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 6 "soma";
+    .port_info 1 /OUTPUT 1 "vaiUmFinal";
+    .port_info 2 /INPUT 6 "a";
+    .port_info 3 /INPUT 6 "b";
+    .port_info 4 /INPUT 1 "vaiUmInicial";
+o0000026cf80e0aa8 .functor BUFZ 1, C4<z>; HiZ drive
+; Elide local net with no drivers, v0000026cf813c640_0 name=_ivl_59
+v0000026cf813b100_0 .net "a", 5 0, v0000026cf813b9c0_0;  1 drivers
+v0000026cf813cc80_0 .net "b", 5 0, v0000026cf813cf00_0;  1 drivers
+v0000026cf813b4c0_0 .net "soma", 5 0, L_0000026cf813bb00;  alias, 1 drivers
+v0000026cf813b1a0_0 .net "vaiUm", 5 0, L_0000026cf813b600;  1 drivers
+v0000026cf813ba60_0 .net "vaiUmFinal", 0 0, L_0000026cf8141d10;  alias, 1 drivers
+L_0000026cf8180088 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000026cf813b560_0 .net "vaiUmInicial", 0 0, L_0000026cf8180088;  1 drivers
+L_0000026cf813c6e0 .part v0000026cf813b9c0_0, 0, 1;
+L_0000026cf813b240 .part v0000026cf813cf00_0, 0, 1;
+L_0000026cf813bec0 .part v0000026cf813b9c0_0, 1, 1;
+L_0000026cf813c820 .part v0000026cf813cf00_0, 1, 1;
+L_0000026cf813c5a0 .part L_0000026cf813b600, 0, 1;
+L_0000026cf813caa0 .part v0000026cf813b9c0_0, 2, 1;
+L_0000026cf813b380 .part v0000026cf813cf00_0, 2, 1;
+L_0000026cf813cfa0 .part L_0000026cf813b600, 1, 1;
+L_0000026cf813ca00 .part v0000026cf813b9c0_0, 3, 1;
+L_0000026cf813c320 .part v0000026cf813cf00_0, 3, 1;
+L_0000026cf813b880 .part L_0000026cf813b600, 2, 1;
+L_0000026cf813c8c0 .part v0000026cf813b9c0_0, 4, 1;
+L_0000026cf813b2e0 .part v0000026cf813cf00_0, 4, 1;
+L_0000026cf813c960 .part L_0000026cf813b600, 3, 1;
+LS_0000026cf813bb00_0_0 .concat8 [ 1 1 1 1], L_0000026cf80d7800, L_0000026cf80d6a70, L_0000026cf80d6b50, L_0000026cf80d6c30;
+LS_0000026cf813bb00_0_4 .concat8 [ 1 1 0 0], L_0000026cf80d6fb0, L_0000026cf8141f40;
+L_0000026cf813bb00 .concat8 [ 4 2 0 0], LS_0000026cf813bb00_0_0, LS_0000026cf813bb00_0_4;
+L_0000026cf813b7e0 .part v0000026cf813b9c0_0, 5, 1;
+L_0000026cf813cb40 .part v0000026cf813cf00_0, 5, 1;
+L_0000026cf813b420 .part L_0000026cf813b600, 4, 1;
+LS_0000026cf813b600_0_0 .concat [ 1 1 1 1], L_0000026cf80d73a0, L_0000026cf80d7410, L_0000026cf80d6f40, L_0000026cf80d6d80;
+LS_0000026cf813b600_0_4 .concat [ 1 1 0 0], L_0000026cf8141e60, o0000026cf80e0aa8;
+L_0000026cf813b600 .concat [ 4 2 0 0], LS_0000026cf813b600_0_0, LS_0000026cf813b600_0_4;
+S_0000026cf80c5860 .scope module, "SC0" "somadorCompleto" 2 55, 2 24 0, S_0000026cf80cace0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUmSaida";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "vaiUmEntrada";
+L_0000026cf80d73a0 .functor OR 1, L_0000026cf80d7250, L_0000026cf80d76b0, C4<0>, C4<0>;
+v0000026cf80da7e0_0 .net "a", 0 0, L_0000026cf813c6e0;  1 drivers
+v0000026cf80da6a0_0 .net "b", 0 0, L_0000026cf813b240;  1 drivers
+v0000026cf80d8940_0 .net "soma", 0 0, L_0000026cf80d7800;  1 drivers
+v0000026cf80d8ee0_0 .net "somaParcial", 0 0, L_0000026cf80d7790;  1 drivers
+v0000026cf80d89e0_0 .net "vaiUmEntrada", 0 0, L_0000026cf8180088;  alias, 1 drivers
+v0000026cf80d9700_0 .net "vaiUmParcial1", 0 0, L_0000026cf80d7250;  1 drivers
+v0000026cf80d9e80_0 .net "vaiUmParcial2", 0 0, L_0000026cf80d76b0;  1 drivers
+v0000026cf80d8d00_0 .net "vaiUmSaida", 0 0, L_0000026cf80d73a0;  1 drivers
+S_0000026cf80c59f0 .scope module, "MS1" "meioSomador" 2 36, 2 10 0, S_0000026cf80c5860;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUm";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026cf80d7790 .functor XOR 1, L_0000026cf813c6e0, L_0000026cf813b240, C4<0>, C4<0>;
+L_0000026cf80d7250 .functor AND 1, L_0000026cf813c6e0, L_0000026cf813b240, C4<1>, C4<1>;
+v0000026cf80da420_0 .net "a", 0 0, L_0000026cf813c6e0;  alias, 1 drivers
+v0000026cf80d9980_0 .net "b", 0 0, L_0000026cf813b240;  alias, 1 drivers
+v0000026cf80d9020_0 .net "soma", 0 0, L_0000026cf80d7790;  alias, 1 drivers
+v0000026cf80da4c0_0 .net "vaiUm", 0 0, L_0000026cf80d7250;  alias, 1 drivers
+S_0000026cf8092720 .scope module, "MS2" "meioSomador" 2 37, 2 10 0, S_0000026cf80c5860;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUm";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026cf80d7800 .functor XOR 1, L_0000026cf80d7790, L_0000026cf8180088, C4<0>, C4<0>;
+L_0000026cf80d76b0 .functor AND 1, L_0000026cf80d7790, L_0000026cf8180088, C4<1>, C4<1>;
+v0000026cf80da240_0 .net "a", 0 0, L_0000026cf80d7790;  alias, 1 drivers
+v0000026cf80da560_0 .net "b", 0 0, L_0000026cf8180088;  alias, 1 drivers
+v0000026cf80d9d40_0 .net "soma", 0 0, L_0000026cf80d7800;  alias, 1 drivers
+v0000026cf80da600_0 .net "vaiUm", 0 0, L_0000026cf80d76b0;  alias, 1 drivers
+S_0000026cf80928b0 .scope module, "SC1" "somadorCompleto" 2 56, 2 24 0, S_0000026cf80cace0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUmSaida";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "vaiUmEntrada";
+L_0000026cf80d7410 .functor OR 1, L_0000026cf80d7170, L_0000026cf80d72c0, C4<0>, C4<0>;
+v0000026cf80d8bc0_0 .net "a", 0 0, L_0000026cf813bec0;  1 drivers
+v0000026cf80d95c0_0 .net "b", 0 0, L_0000026cf813c820;  1 drivers
+v0000026cf80d9200_0 .net "soma", 0 0, L_0000026cf80d6a70;  1 drivers
+v0000026cf80d9de0_0 .net "somaParcial", 0 0, L_0000026cf80d7100;  1 drivers
+v0000026cf80d9840_0 .net "vaiUmEntrada", 0 0, L_0000026cf813c5a0;  1 drivers
+v0000026cf80d8c60_0 .net "vaiUmParcial1", 0 0, L_0000026cf80d7170;  1 drivers
+v0000026cf80d9ac0_0 .net "vaiUmParcial2", 0 0, L_0000026cf80d72c0;  1 drivers
+v0000026cf80d9b60_0 .net "vaiUmSaida", 0 0, L_0000026cf80d7410;  1 drivers
+S_0000026cf80dc210 .scope module, "MS1" "meioSomador" 2 36, 2 10 0, S_0000026cf80928b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUm";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026cf80d7100 .functor XOR 1, L_0000026cf813bec0, L_0000026cf813c820, C4<0>, C4<0>;
+L_0000026cf80d7170 .functor AND 1, L_0000026cf813bec0, L_0000026cf813c820, C4<1>, C4<1>;
+v0000026cf80d90c0_0 .net "a", 0 0, L_0000026cf813bec0;  alias, 1 drivers
+v0000026cf80d97a0_0 .net "b", 0 0, L_0000026cf813c820;  alias, 1 drivers
+v0000026cf80d8a80_0 .net "soma", 0 0, L_0000026cf80d7100;  alias, 1 drivers
+v0000026cf80d8e40_0 .net "vaiUm", 0 0, L_0000026cf80d7170;  alias, 1 drivers
+S_0000026cf80dc3a0 .scope module, "MS2" "meioSomador" 2 37, 2 10 0, S_0000026cf80928b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUm";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026cf80d6a70 .functor XOR 1, L_0000026cf80d7100, L_0000026cf813c5a0, C4<0>, C4<0>;
+L_0000026cf80d72c0 .functor AND 1, L_0000026cf80d7100, L_0000026cf813c5a0, C4<1>, C4<1>;
+v0000026cf80d9480_0 .net "a", 0 0, L_0000026cf80d7100;  alias, 1 drivers
+v0000026cf80d9520_0 .net "b", 0 0, L_0000026cf813c5a0;  alias, 1 drivers
+v0000026cf80d9160_0 .net "soma", 0 0, L_0000026cf80d6a70;  alias, 1 drivers
+v0000026cf80d8b20_0 .net "vaiUm", 0 0, L_0000026cf80d72c0;  alias, 1 drivers
+S_0000026cf80dc530 .scope module, "SC2" "somadorCompleto" 2 57, 2 24 0, S_0000026cf80cace0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUmSaida";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "vaiUmEntrada";
+L_0000026cf80d6f40 .functor OR 1, L_0000026cf80d7480, L_0000026cf80d74f0, C4<0>, C4<0>;
+v0000026cf8138610_0 .net "a", 0 0, L_0000026cf813caa0;  1 drivers
+v0000026cf8136a90_0 .net "b", 0 0, L_0000026cf813b380;  1 drivers
+v0000026cf8137170_0 .net "soma", 0 0, L_0000026cf80d6b50;  1 drivers
+v0000026cf8137710_0 .net "somaParcial", 0 0, L_0000026cf80d6ae0;  1 drivers
+v0000026cf8137a30_0 .net "vaiUmEntrada", 0 0, L_0000026cf813cfa0;  1 drivers
+v0000026cf8138250_0 .net "vaiUmParcial1", 0 0, L_0000026cf80d7480;  1 drivers
+v0000026cf8137030_0 .net "vaiUmParcial2", 0 0, L_0000026cf80d74f0;  1 drivers
+v0000026cf8137d50_0 .net "vaiUmSaida", 0 0, L_0000026cf80d6f40;  1 drivers
+S_0000026cf8136400 .scope module, "MS1" "meioSomador" 2 36, 2 10 0, S_0000026cf80dc530;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUm";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026cf80d6ae0 .functor XOR 1, L_0000026cf813caa0, L_0000026cf813b380, C4<0>, C4<0>;
+L_0000026cf80d7480 .functor AND 1, L_0000026cf813caa0, L_0000026cf813b380, C4<1>, C4<1>;
+v0000026cf80d9c00_0 .net "a", 0 0, L_0000026cf813caa0;  alias, 1 drivers
+v0000026cf80d9f20_0 .net "b", 0 0, L_0000026cf813b380;  alias, 1 drivers
+v0000026cf80d9fc0_0 .net "soma", 0 0, L_0000026cf80d6ae0;  alias, 1 drivers
+v0000026cf80da100_0 .net "vaiUm", 0 0, L_0000026cf80d7480;  alias, 1 drivers
+S_0000026cf8136590 .scope module, "MS2" "meioSomador" 2 37, 2 10 0, S_0000026cf80dc530;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUm";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026cf80d6b50 .functor XOR 1, L_0000026cf80d6ae0, L_0000026cf813cfa0, C4<0>, C4<0>;
+L_0000026cf80d74f0 .functor AND 1, L_0000026cf80d6ae0, L_0000026cf813cfa0, C4<1>, C4<1>;
+v0000026cf80d4080_0 .net "a", 0 0, L_0000026cf80d6ae0;  alias, 1 drivers
+v0000026cf80d39a0_0 .net "b", 0 0, L_0000026cf813cfa0;  alias, 1 drivers
+v0000026cf80d3f40_0 .net "soma", 0 0, L_0000026cf80d6b50;  alias, 1 drivers
+v0000026cf80d4120_0 .net "vaiUm", 0 0, L_0000026cf80d74f0;  alias, 1 drivers
+S_0000026cf8138730 .scope module, "SC3" "somadorCompleto" 2 58, 2 24 0, S_0000026cf80cace0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUmSaida";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "vaiUmEntrada";
+L_0000026cf80d6d80 .functor OR 1, L_0000026cf80d6bc0, L_0000026cf80d6d10, C4<0>, C4<0>;
+v0000026cf8136b30_0 .net "a", 0 0, L_0000026cf813ca00;  1 drivers
+v0000026cf8136770_0 .net "b", 0 0, L_0000026cf813c320;  1 drivers
+v0000026cf8137c10_0 .net "soma", 0 0, L_0000026cf80d6c30;  1 drivers
+v0000026cf8136bd0_0 .net "somaParcial", 0 0, L_0000026cf80d7640;  1 drivers
+v0000026cf8136db0_0 .net "vaiUmEntrada", 0 0, L_0000026cf813b880;  1 drivers
+v0000026cf8137350_0 .net "vaiUmParcial1", 0 0, L_0000026cf80d6bc0;  1 drivers
+v0000026cf8137ad0_0 .net "vaiUmParcial2", 0 0, L_0000026cf80d6d10;  1 drivers
+v0000026cf81373f0_0 .net "vaiUmSaida", 0 0, L_0000026cf80d6d80;  1 drivers
+S_0000026cf81388c0 .scope module, "MS1" "meioSomador" 2 36, 2 10 0, S_0000026cf8138730;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUm";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026cf80d7640 .functor XOR 1, L_0000026cf813ca00, L_0000026cf813c320, C4<0>, C4<0>;
+L_0000026cf80d6bc0 .functor AND 1, L_0000026cf813ca00, L_0000026cf813c320, C4<1>, C4<1>;
+v0000026cf81369f0_0 .net "a", 0 0, L_0000026cf813ca00;  alias, 1 drivers
+v0000026cf8137490_0 .net "b", 0 0, L_0000026cf813c320;  alias, 1 drivers
+v0000026cf8136d10_0 .net "soma", 0 0, L_0000026cf80d7640;  alias, 1 drivers
+v0000026cf8136c70_0 .net "vaiUm", 0 0, L_0000026cf80d6bc0;  alias, 1 drivers
+S_0000026cf8138a50 .scope module, "MS2" "meioSomador" 2 37, 2 10 0, S_0000026cf8138730;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUm";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026cf80d6c30 .functor XOR 1, L_0000026cf80d7640, L_0000026cf813b880, C4<0>, C4<0>;
+L_0000026cf80d6d10 .functor AND 1, L_0000026cf80d7640, L_0000026cf813b880, C4<1>, C4<1>;
+v0000026cf81372b0_0 .net "a", 0 0, L_0000026cf80d7640;  alias, 1 drivers
+v0000026cf81370d0_0 .net "b", 0 0, L_0000026cf813b880;  alias, 1 drivers
+v0000026cf8137530_0 .net "soma", 0 0, L_0000026cf80d6c30;  alias, 1 drivers
+v0000026cf8138570_0 .net "vaiUm", 0 0, L_0000026cf80d6d10;  alias, 1 drivers
+S_0000026cf8138be0 .scope module, "SC4" "somadorCompleto" 2 59, 2 24 0, S_0000026cf80cace0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUmSaida";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "vaiUmEntrada";
+L_0000026cf8141e60 .functor OR 1, L_0000026cf80d6ed0, L_0000026cf8141760, C4<0>, C4<0>;
+v0000026cf8136ef0_0 .net "a", 0 0, L_0000026cf813c8c0;  1 drivers
+v0000026cf81384d0_0 .net "b", 0 0, L_0000026cf813b2e0;  1 drivers
+v0000026cf8136810_0 .net "soma", 0 0, L_0000026cf80d6fb0;  1 drivers
+v0000026cf8137df0_0 .net "somaParcial", 0 0, L_0000026cf80d6df0;  1 drivers
+v0000026cf8137670_0 .net "vaiUmEntrada", 0 0, L_0000026cf813c960;  1 drivers
+v0000026cf8137fd0_0 .net "vaiUmParcial1", 0 0, L_0000026cf80d6ed0;  1 drivers
+v0000026cf81368b0_0 .net "vaiUmParcial2", 0 0, L_0000026cf8141760;  1 drivers
+v0000026cf81375d0_0 .net "vaiUmSaida", 0 0, L_0000026cf8141e60;  1 drivers
+S_0000026cf8138d70 .scope module, "MS1" "meioSomador" 2 36, 2 10 0, S_0000026cf8138be0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUm";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026cf80d6df0 .functor XOR 1, L_0000026cf813c8c0, L_0000026cf813b2e0, C4<0>, C4<0>;
+L_0000026cf80d6ed0 .functor AND 1, L_0000026cf813c8c0, L_0000026cf813b2e0, C4<1>, C4<1>;
+v0000026cf81382f0_0 .net "a", 0 0, L_0000026cf813c8c0;  alias, 1 drivers
+v0000026cf8136e50_0 .net "b", 0 0, L_0000026cf813b2e0;  alias, 1 drivers
+v0000026cf8137e90_0 .net "soma", 0 0, L_0000026cf80d6df0;  alias, 1 drivers
+v0000026cf8138390_0 .net "vaiUm", 0 0, L_0000026cf80d6ed0;  alias, 1 drivers
+S_0000026cf8138f00 .scope module, "MS2" "meioSomador" 2 37, 2 10 0, S_0000026cf8138be0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUm";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026cf80d6fb0 .functor XOR 1, L_0000026cf80d6df0, L_0000026cf813c960, C4<0>, C4<0>;
+L_0000026cf8141760 .functor AND 1, L_0000026cf80d6df0, L_0000026cf813c960, C4<1>, C4<1>;
+v0000026cf8138430_0 .net "a", 0 0, L_0000026cf80d6df0;  alias, 1 drivers
+v0000026cf8137cb0_0 .net "b", 0 0, L_0000026cf813c960;  alias, 1 drivers
+v0000026cf8137b70_0 .net "soma", 0 0, L_0000026cf80d6fb0;  alias, 1 drivers
+v0000026cf8137210_0 .net "vaiUm", 0 0, L_0000026cf8141760;  alias, 1 drivers
+S_0000026cf813a5a0 .scope module, "SC5" "somadorCompleto" 2 60, 2 24 0, S_0000026cf80cace0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUmSaida";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "vaiUmEntrada";
+L_0000026cf8141d10 .functor OR 1, L_0000026cf81418b0, L_0000026cf81413e0, C4<0>, C4<0>;
+v0000026cf8138070_0 .net "a", 0 0, L_0000026cf813b7e0;  1 drivers
+v0000026cf8138110_0 .net "b", 0 0, L_0000026cf813cb40;  1 drivers
+v0000026cf813cbe0_0 .net "soma", 0 0, L_0000026cf8141f40;  1 drivers
+v0000026cf813c780_0 .net "somaParcial", 0 0, L_0000026cf8141ed0;  1 drivers
+v0000026cf813cdc0_0 .net "vaiUmEntrada", 0 0, L_0000026cf813b420;  1 drivers
+v0000026cf813bce0_0 .net "vaiUmParcial1", 0 0, L_0000026cf81418b0;  1 drivers
+v0000026cf813c460_0 .net "vaiUmParcial2", 0 0, L_0000026cf81413e0;  1 drivers
+v0000026cf813bf60_0 .net "vaiUmSaida", 0 0, L_0000026cf8141d10;  alias, 1 drivers
+S_0000026cf813abe0 .scope module, "MS1" "meioSomador" 2 36, 2 10 0, S_0000026cf813a5a0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUm";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026cf8141ed0 .functor XOR 1, L_0000026cf813b7e0, L_0000026cf813cb40, C4<0>, C4<0>;
+L_0000026cf81418b0 .functor AND 1, L_0000026cf813b7e0, L_0000026cf813cb40, C4<1>, C4<1>;
+v0000026cf81381b0_0 .net "a", 0 0, L_0000026cf813b7e0;  alias, 1 drivers
+v0000026cf81377b0_0 .net "b", 0 0, L_0000026cf813cb40;  alias, 1 drivers
+v0000026cf8136f90_0 .net "soma", 0 0, L_0000026cf8141ed0;  alias, 1 drivers
+v0000026cf8137850_0 .net "vaiUm", 0 0, L_0000026cf81418b0;  alias, 1 drivers
+S_0000026cf813ad70 .scope module, "MS2" "meioSomador" 2 37, 2 10 0, S_0000026cf813a5a0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "vaiUm";
+    .port_info 1 /OUTPUT 1 "soma";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026cf8141f40 .functor XOR 1, L_0000026cf8141ed0, L_0000026cf813b420, C4<0>, C4<0>;
+L_0000026cf81413e0 .functor AND 1, L_0000026cf8141ed0, L_0000026cf813b420, C4<1>, C4<1>;
+v0000026cf8136950_0 .net "a", 0 0, L_0000026cf8141ed0;  alias, 1 drivers
+v0000026cf81378f0_0 .net "b", 0 0, L_0000026cf813b420;  alias, 1 drivers
+v0000026cf8137990_0 .net "soma", 0 0, L_0000026cf8141f40;  alias, 1 drivers
+v0000026cf8137f30_0 .net "vaiUm", 0 0, L_0000026cf81413e0;  alias, 1 drivers
+S_0000026cf813a730 .scope begin, "main" "main" 2 77, 2 77 0, S_0000026cf80cab50;
+ .timescale 0 0;
+    .scope S_0000026cf80cab50;
+T_0 ;
+    %fork t_1, S_0000026cf813a730;
+    %jmp t_0;
+    .scope S_0000026cf813a730;
+t_1 ;
+    %vpi_call 2 78 "$display", "Guia_0801 - Felipe Gabriel de Carvalho - 1543536" {0 0 0};
+    %vpi_call 2 79 "$display", "Teste do Somador de 6 bits" {0 0 0};
+    %pushi/vec4 0, 0, 6;
+    %store/vec4 v0000026cf813b9c0_0, 0, 6;
+    %pushi/vec4 0, 0, 6;
+    %store/vec4 v0000026cf813cf00_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 83 "$display", "%b + %b = %b carryOut=%b", v0000026cf813b9c0_0, v0000026cf813cf00_0, v0000026cf813c280_0, v0000026cf813ce60_0 {0 0 0};
+    %pushi/vec4 1, 0, 6;
+    %store/vec4 v0000026cf813b9c0_0, 0, 6;
+    %pushi/vec4 1, 0, 6;
+    %store/vec4 v0000026cf813cf00_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 86 "$display", "%b + %b = %b carryOut=%b", v0000026cf813b9c0_0, v0000026cf813cf00_0, v0000026cf813c280_0, v0000026cf813ce60_0 {0 0 0};
+    %pushi/vec4 21, 0, 6;
+    %store/vec4 v0000026cf813b9c0_0, 0, 6;
+    %pushi/vec4 10, 0, 6;
+    %store/vec4 v0000026cf813cf00_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 89 "$display", "%b + %b = %b carryOut=%b", v0000026cf813b9c0_0, v0000026cf813cf00_0, v0000026cf813c280_0, v0000026cf813ce60_0 {0 0 0};
+    %pushi/vec4 63, 0, 6;
+    %store/vec4 v0000026cf813b9c0_0, 0, 6;
+    %pushi/vec4 1, 0, 6;
+    %store/vec4 v0000026cf813cf00_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 92 "$display", "%b + %b = %b carryOut=%b", v0000026cf813b9c0_0, v0000026cf813cf00_0, v0000026cf813c280_0, v0000026cf813ce60_0 {0 0 0};
+    %pushi/vec4 63, 0, 6;
+    %store/vec4 v0000026cf813b9c0_0, 0, 6;
+    %pushi/vec4 63, 0, 6;
+    %store/vec4 v0000026cf813cf00_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 95 "$display", "%b + %b = %b carryOut=%b", v0000026cf813b9c0_0, v0000026cf813cf00_0, v0000026cf813c280_0, v0000026cf813ce60_0 {0 0 0};
+    %end;
+    .scope S_0000026cf80cab50;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0801.v";

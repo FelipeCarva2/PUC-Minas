@@ -1,0 +1,116 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000002052850d370 .scope module, "test_LU_AND_NAND" "test_LU_AND_NAND" 2 23;
+ .timescale 0 0;
+v0000020528412be0_0 .var "a", 0 0;
+v0000020528413860_0 .var "b", 0 0;
+v0000020528413720_0 .net "s", 0 0, L_000002052850a710;  1 drivers
+v0000020528412a00_0 .var "select", 0 0;
+S_000002052850d500 .scope module, "LU1" "LU_AND_NAND" 2 27, 2 5 0, S_000002052850d370;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+    .port_info 3 /INPUT 1 "select";
+L_000002052850aa20 .functor AND 1, v0000020528412be0_0, v0000020528413860_0, C4<1>, C4<1>;
+L_000002052850ac50 .functor NAND 1, v0000020528412be0_0, v0000020528413860_0, C4<1>, C4<1>;
+v00000205284160a0_0 .net "a", 0 0, v0000020528412be0_0;  1 drivers
+v0000020528416140_0 .net "and_out", 0 0, L_000002052850aa20;  1 drivers
+v0000020528461030_0 .net "b", 0 0, v0000020528413860_0;  1 drivers
+v00000205284610d0_0 .net "nand_out", 0 0, L_000002052850ac50;  1 drivers
+v0000020528413220_0 .net "s", 0 0, L_000002052850a710;  alias, 1 drivers
+v0000020528412dc0_0 .net "select", 0 0, v0000020528412a00_0;  1 drivers
+S_0000020528415dd0 .scope module, "MUX1" "mux2x1" 2 11, 2 14 0, S_000002052850d500;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "x";
+    .port_info 2 /INPUT 1 "y";
+    .port_info 3 /INPUT 1 "e";
+L_000002052850a5c0 .functor NOT 1, v0000020528412a00_0, C4<0>, C4<0>, C4<0>;
+L_000002052850ab00 .functor AND 1, L_000002052850aa20, L_000002052850a5c0, C4<1>, C4<1>;
+L_000002052850a630 .functor AND 1, L_000002052850ac50, v0000020528412a00_0, C4<1>, C4<1>;
+L_000002052850a710 .functor OR 1, L_000002052850ab00, L_000002052850a630, C4<0>, C4<0>;
+v00000205283e2fa0_0 .net "e", 0 0, v0000020528412a00_0;  alias, 1 drivers
+v00000205283e2b20_0 .net "not_e", 0 0, L_000002052850a5c0;  1 drivers
+v00000205283e2d80_0 .net "s", 0 0, L_000002052850a710;  alias, 1 drivers
+v000002052850d690_0 .net "sx", 0 0, L_000002052850ab00;  1 drivers
+v000002052850d730_0 .net "sy", 0 0, L_000002052850a630;  1 drivers
+v0000020528415f60_0 .net "x", 0 0, L_000002052850aa20;  alias, 1 drivers
+v0000020528416000_0 .net "y", 0 0, L_000002052850ac50;  alias, 1 drivers
+    .scope S_000002052850d370;
+T_0 ;
+    %vpi_call 2 30 "$display", "Guia_0701 - Teste LU AND/NAND" {0 0 0};
+    %vpi_call 2 31 "$display", " a b select s" {0 0 0};
+    %vpi_call 2 32 "$monitor", "%b %b %b %b", v0000020528412be0_0, v0000020528413860_0, v0000020528412a00_0, v0000020528413720_0 {0 0 0};
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020528412be0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020528413860_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020528412a00_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020528412be0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020528413860_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020528412a00_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020528412be0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020528413860_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020528412a00_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020528412be0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020528413860_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020528412a00_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020528412be0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020528413860_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020528412a00_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020528412be0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020528413860_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020528412a00_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020528412be0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020528413860_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020528412a00_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020528412be0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020528413860_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020528412a00_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0701.v";

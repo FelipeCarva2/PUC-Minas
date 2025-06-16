@@ -1,0 +1,127 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000025b363d9b00 .scope module, "teste_comparadorIgualdade" "teste_comparadorIgualdade" 2 33;
+ .timescale 0 0;
+v0000025b363e2700_0 .var "a", 5 0;
+v0000025b363e43c0_0 .var "b", 5 0;
+v0000025b363e3d80_0 .net "igual", 0 0, L_0000025b363d9180;  1 drivers
+S_0000025b3632bd90 .scope module, "COMP" "comparadorIgualdade" 2 39, 2 10 0, S_0000025b363d9b00;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "igual";
+    .port_info 1 /INPUT 6 "a";
+    .port_info 2 /INPUT 6 "b";
+L_0000025b363d9340 .functor XNOR 1, L_0000025b363e40a0, L_0000025b363e3ba0, C4<0>, C4<0>;
+L_0000025b363d90a0 .functor XNOR 1, L_0000025b363e2e80, L_0000025b363e3c40, C4<0>, C4<0>;
+L_0000025b363d92d0 .functor XNOR 1, L_0000025b363e3740, L_0000025b363e45a0, C4<0>, C4<0>;
+L_0000025b363d9650 .functor XNOR 1, L_0000025b363e3e20, L_0000025b363e2980, C4<0>, C4<0>;
+L_0000025b363d93b0 .functor XNOR 1, L_0000025b363e3240, L_0000025b363e3ec0, C4<0>, C4<0>;
+L_0000025b363d9260 .functor XNOR 1, L_0000025b363e32e0, L_0000025b363e3f60, C4<0>, C4<0>;
+L_0000025b363d9180/0/0 .functor AND 1, L_0000025b363e3060, L_0000025b363e2ac0, L_0000025b363e2d40, L_0000025b363e39c0;
+L_0000025b363d9180/0/4 .functor AND 1, L_0000025b363e3a60, L_0000025b363e2de0, C4<1>, C4<1>;
+L_0000025b363d9180 .functor AND 1, L_0000025b363d9180/0/0, L_0000025b363d9180/0/4, C4<1>, C4<1>;
+v0000025b363d5910_0 .net *"_ivl_0", 0 0, L_0000025b363d9340;  1 drivers
+v0000025b363d59b0_0 .net *"_ivl_11", 0 0, L_0000025b363e3c40;  1 drivers
+v0000025b363d5cd0_0 .net *"_ivl_12", 0 0, L_0000025b363d92d0;  1 drivers
+v0000025b363d5d70_0 .net *"_ivl_15", 0 0, L_0000025b363e3740;  1 drivers
+v0000025b363d5ff0_0 .net *"_ivl_17", 0 0, L_0000025b363e45a0;  1 drivers
+v0000025b363d6090_0 .net *"_ivl_18", 0 0, L_0000025b363d9650;  1 drivers
+v0000025b363d6130_0 .net *"_ivl_21", 0 0, L_0000025b363e3e20;  1 drivers
+v0000025b363d61d0_0 .net *"_ivl_23", 0 0, L_0000025b363e2980;  1 drivers
+v0000025b363d6270_0 .net *"_ivl_24", 0 0, L_0000025b363d93b0;  1 drivers
+v0000025b363d63b0_0 .net *"_ivl_27", 0 0, L_0000025b363e3240;  1 drivers
+v0000025b363d6450_0 .net *"_ivl_29", 0 0, L_0000025b363e3ec0;  1 drivers
+v0000025b363d64f0_0 .net *"_ivl_3", 0 0, L_0000025b363e40a0;  1 drivers
+v0000025b363e2b60_0 .net *"_ivl_30", 0 0, L_0000025b363d9260;  1 drivers
+v0000025b363e31a0_0 .net *"_ivl_34", 0 0, L_0000025b363e32e0;  1 drivers
+v0000025b363e4140_0 .net *"_ivl_36", 0 0, L_0000025b363e3f60;  1 drivers
+v0000025b363e36a0_0 .net *"_ivl_38", 0 0, L_0000025b363e3060;  1 drivers
+v0000025b363e2ca0_0 .net *"_ivl_40", 0 0, L_0000025b363e2ac0;  1 drivers
+v0000025b363e37e0_0 .net *"_ivl_42", 0 0, L_0000025b363e2d40;  1 drivers
+v0000025b363e3ce0_0 .net *"_ivl_44", 0 0, L_0000025b363e39c0;  1 drivers
+v0000025b363e4500_0 .net *"_ivl_46", 0 0, L_0000025b363e3a60;  1 drivers
+v0000025b363e4000_0 .net *"_ivl_48", 0 0, L_0000025b363e2de0;  1 drivers
+v0000025b363e3420_0 .net *"_ivl_5", 0 0, L_0000025b363e3ba0;  1 drivers
+v0000025b363e4320_0 .net *"_ivl_6", 0 0, L_0000025b363d90a0;  1 drivers
+v0000025b363e34c0_0 .net *"_ivl_9", 0 0, L_0000025b363e2e80;  1 drivers
+v0000025b363e2f20_0 .net "a", 5 0, v0000025b363e2700_0;  1 drivers
+v0000025b363e3560_0 .net "b", 5 0, v0000025b363e43c0_0;  1 drivers
+v0000025b363e3600_0 .net "igual", 0 0, L_0000025b363d9180;  alias, 1 drivers
+v0000025b363e3920_0 .net "xnorSaida", 5 0, L_0000025b363e3880;  1 drivers
+L_0000025b363e40a0 .part v0000025b363e2700_0, 0, 1;
+L_0000025b363e3ba0 .part v0000025b363e43c0_0, 0, 1;
+L_0000025b363e2e80 .part v0000025b363e2700_0, 1, 1;
+L_0000025b363e3c40 .part v0000025b363e43c0_0, 1, 1;
+L_0000025b363e3740 .part v0000025b363e2700_0, 2, 1;
+L_0000025b363e45a0 .part v0000025b363e43c0_0, 2, 1;
+L_0000025b363e3e20 .part v0000025b363e2700_0, 3, 1;
+L_0000025b363e2980 .part v0000025b363e43c0_0, 3, 1;
+L_0000025b363e3240 .part v0000025b363e2700_0, 4, 1;
+L_0000025b363e3ec0 .part v0000025b363e43c0_0, 4, 1;
+LS_0000025b363e3880_0_0 .concat8 [ 1 1 1 1], L_0000025b363d9340, L_0000025b363d90a0, L_0000025b363d92d0, L_0000025b363d9650;
+LS_0000025b363e3880_0_4 .concat8 [ 1 1 0 0], L_0000025b363d93b0, L_0000025b363d9260;
+L_0000025b363e3880 .concat8 [ 4 2 0 0], LS_0000025b363e3880_0_0, LS_0000025b363e3880_0_4;
+L_0000025b363e32e0 .part v0000025b363e2700_0, 5, 1;
+L_0000025b363e3f60 .part v0000025b363e43c0_0, 5, 1;
+L_0000025b363e3060 .part L_0000025b363e3880, 0, 1;
+L_0000025b363e2ac0 .part L_0000025b363e3880, 1, 1;
+L_0000025b363e2d40 .part L_0000025b363e3880, 2, 1;
+L_0000025b363e39c0 .part L_0000025b363e3880, 3, 1;
+L_0000025b363e3a60 .part L_0000025b363e3880, 4, 1;
+L_0000025b363e2de0 .part L_0000025b363e3880, 5, 1;
+S_0000025b363b2720 .scope begin, "main" "main" 2 42, 2 42 0, S_0000025b363d9b00;
+ .timescale 0 0;
+    .scope S_0000025b363d9b00;
+T_0 ;
+    %fork t_1, S_0000025b363b2720;
+    %jmp t_0;
+    .scope S_0000025b363b2720;
+t_1 ;
+    %vpi_call 2 43 "$display", "Guia_0803 - Felipe Gabriel de Carvalho - 1543536" {0 0 0};
+    %vpi_call 2 44 "$display", "Teste do Comparador de Igualdade 6 bits" {0 0 0};
+    %pushi/vec4 0, 0, 6;
+    %store/vec4 v0000025b363e2700_0, 0, 6;
+    %pushi/vec4 0, 0, 6;
+    %store/vec4 v0000025b363e43c0_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "%b == %b? %b", v0000025b363e2700_0, v0000025b363e43c0_0, v0000025b363e3d80_0 {0 0 0};
+    %pushi/vec4 1, 0, 6;
+    %store/vec4 v0000025b363e2700_0, 0, 6;
+    %pushi/vec4 0, 0, 6;
+    %store/vec4 v0000025b363e43c0_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 51 "$display", "%b == %b? %b", v0000025b363e2700_0, v0000025b363e43c0_0, v0000025b363e3d80_0 {0 0 0};
+    %pushi/vec4 21, 0, 6;
+    %store/vec4 v0000025b363e2700_0, 0, 6;
+    %pushi/vec4 21, 0, 6;
+    %store/vec4 v0000025b363e43c0_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 54 "$display", "%b == %b? %b", v0000025b363e2700_0, v0000025b363e43c0_0, v0000025b363e3d80_0 {0 0 0};
+    %pushi/vec4 42, 0, 6;
+    %store/vec4 v0000025b363e2700_0, 0, 6;
+    %pushi/vec4 21, 0, 6;
+    %store/vec4 v0000025b363e43c0_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 57 "$display", "%b == %b? %b", v0000025b363e2700_0, v0000025b363e43c0_0, v0000025b363e3d80_0 {0 0 0};
+    %pushi/vec4 63, 0, 6;
+    %store/vec4 v0000025b363e2700_0, 0, 6;
+    %pushi/vec4 63, 0, 6;
+    %store/vec4 v0000025b363e43c0_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 60 "$display", "%b == %b? %b", v0000025b363e2700_0, v0000025b363e43c0_0, v0000025b363e3d80_0 {0 0 0};
+    %end;
+    .scope S_0000025b363d9b00;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0803.v";

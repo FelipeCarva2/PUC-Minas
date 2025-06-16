@@ -1,0 +1,1 @@
+Eu não entendi muito bem a simplificação dos MAXTERMOS, sei como montar o mapa de Karnaugh e preencher com os valores, mas realmente não entendi a parte de simplificação.

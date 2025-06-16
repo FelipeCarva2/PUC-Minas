@@ -1,0 +1,36 @@
+; Guia_1604.txt
+; Aluno: Felipe Gabriel de Carvalho
+; Matrícula: 1543536
+
+; Encontrar o maior valor em um arranjo de 10 números
+; Dados:
+; Endereço inicial do arranjo em 2050h
+; Tamanho do arranjo em 2050h
+; Maior valor em 3050h
+
+LXI H, 2050h       ; HL = 2050h
+MOV B, M           ; B = tamanho do arranjo
+MOV C, M           ; C = tamanho do arranjo
+INX H              ; HL = 2051h
+
+MOV A, M           ; A = primeiro número
+MOV D, A           ; D = maior valor
+
+; Loop de comparação
+COMPARE_LOOP:
+INX H              ; HL = próximo número
+MOV A, M           ; A = próximo número
+CMP D              ; Compara A com D
+JZ SKIP_UPDATE     ; Se A == D, não atualiza
+
+MOV D, A           ; D = A (novo maior valor)
+
+SKIP_UPDATE:
+DCR C              ; C = C - 1
+JNZ COMPARE_LOOP   ; Se C != 0, continua o loop
+
+; Armazenar maior valor
+LXI H, 3050h       ; HL = 3050h
+MOV M, D           ; Maior valor em 3050h
+
+HLT                ; Fim do programa

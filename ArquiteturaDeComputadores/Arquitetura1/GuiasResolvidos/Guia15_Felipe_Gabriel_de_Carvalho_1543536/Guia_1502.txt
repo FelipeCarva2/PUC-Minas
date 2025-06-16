@@ -1,0 +1,66 @@
+// Guia_1502.txt
+// 1543536 - Felipe Gabriel de Carvalho
+//
+// Implementar um programa (Guia_1502.txt) para o processador 8085 para 
+// calcular o resultado da expressão aritmética abaixo, 
+// usando dados com 16 bits (sinal+amplitude). 
+// Sugestão: Usar complemento de 2 para a subtração. 
+ 
+// dado05 = dado01 + dado02 - dado03 + dado04
+
+// Area de código    ; Significado           // Comentario
+        LXI    H,dado1 ; HL <- addr(dado1)  // endereço do dado1 (parte baixa)
+        MOV    B,M     ; B  <- MEM[HL]      // B = dado1[0]
+        INX    H       ; HL <- HL+1         // endereço do dado1 (parte alta)
+        MOV    A,M     ; A  <- MEM[HL]      // A = dado1[1]
+        INX    H       ; HL <- HL+1         // endereço do dado2 (parte baixa)
+        MOV    D,M     ; D  <- MEM[HL]      // D = dado2[0]
+        INX    H       ; HL <- HL+1         // endereço do dado2 (parte alta)
+        MOV    C,M     ; C  <- MEM[HL]      // C = dado2[1]
+
+        MOV    E,B     ; E  <- B            // E = dado1[0] (cópia)
+        ADD    D       ; A  <- B + D        // Soma partes baixas (A = dado1[0] + dado2[0])
+        MOV    B,A     ; B  <- A            // B = resultado parcial (baixo)
+        MOV    A,E     ; A  <- E            // A = dado1[1] (original)
+        ADC    C       ; A  <- A + C + CY   // Soma partes altas com carry
+        MOV    E,A     ; E  <- A            // E = resultado parcial (alto)
+
+        INX    H       ; HL <- HL+1         // endereço do dado3 (parte baixa)
+        MOV    D,M     ; D  <- MEM[HL]      // D = dado3[0]
+        INX    H       ; HL <- HL+1         // endereço do dado3 (parte alta)
+        MOV    C,M     ; C  <- MEM[HL]      // C = dado3[1]
+
+        MOV    A,D     ; A  <- D            // A = dado3[0]
+        CMA           ; A  <- NOT A         // Complemento de 1 (parte baixa)
+        ADI    1       ; A  <- A + 1        // Complemento de 2 (-dado3[0])
+        MOV    D,A     ; D  <- A            // D = -dado3[0]
+        MOV    A,C     ; A  <- C            // A = dado3[1]
+        CMA           ; A  <- NOT A         // Complemento de 1 (parte alta)
+        ACI    0       ; A  <- A + 0 + CY   // Complemento de 2 (-dado3[1] com carry)
+        MOV    C,A     ; C  <- A            // C = -dado3[1]
+
+        MOV    A,B     ; A  <- B            // A = resultado baixo (dado1 + dado2)
+        ADD    D       ; A  <- A + D        // Soma com -dado3[0]
+        MOV    B,A     ; B  <- A            // B = resultado parcial (baixo)
+        MOV    A,E     ; A  <- E            // A = resultado alto (dado1 + dado2)
+        ADC    C       ; A  <- A + C + CY   // Soma com -dado3[1] + carry
+        MOV    E,A     ; E  <- A            // E = resultado parcial (alto)
+
+        INX    H       ; HL <- HL+1         // endereço do dado4 (parte baixa)
+        MOV    D,M     ; D  <- MEM[HL]      // D = dado4[0]
+        INX    H       ; HL <- HL+1         // endereço do dado4 (parte alta)
+        MOV    C,M     ; C  <- MEM[HL]      // C = dado4[1]
+
+        MOV    A,B     ; A  <- B            // A = resultado baixo (parcial)
+        ADD    D       ; A  <- A + D        // Soma com dado4[0]
+        MOV    B,A     ; B  <- A            // B = resultado final (baixo)
+        MOV    A,E     ; A  <- E            // A = resultado alto (parcial)
+        ADC    C       ; A  <- A + C + CY   // Soma com dado4[1] + carry
+        MOV    E,A     ; E  <- A            // E = resultado final (alto)
+
+        LXI    H,dado5 ; HL <- addr(dado5)  // endereço do resultado
+        MOV    M,B     ; MEM[HL] <- B       // armazena parte baixa
+        INX    H       ; HL <- HL+1         // próximo byte
+        MOV    M,E     ; MEM[HL] <- E       // armazena parte alta
+        HLT           ; halt                // termina execução
+

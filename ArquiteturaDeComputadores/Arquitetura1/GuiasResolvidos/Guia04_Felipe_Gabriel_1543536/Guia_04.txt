@@ -1,0 +1,274 @@
+Felipe Gabriel de Carvalho - 1543536
+ARQ-01
+Guia_04
+Atividades: 
+ 
+01.) Construir a tabela-verdade para as proposições 
+e verificar pelas respectivas tabelas-verdades implementadas em Verilog e pelo Logisim: 
+Exemplo: 
+
+x'+(y'•z') 
+ 
+#mintermos	 mintermos 	x y z	 x'	 y' 	z' 	y'•z'	 x'+(y'•z') 
+    0		 x'•y'•z' 	0 0 0 	 1 	 1 	1 	  1 	      1 
+    1 		 x'•y'•z 	0 0 1	 1	 1 	0 	  0 	      1 
+    2 		 x'•y•z'	0 1 0 	 1 	 0 	1 	  0 	      1 
+    3 		 x'•y•z		0 1 1 	 1 	 0	0 	  0 	      1 
+    4  		 x•y'•z' 	1 0 0 	 0 	 1 	1 	  1 	      1 
+    5 		 x•y'•z 	1 0 1 	 0 	 1 	0 	  0 	      0 
+    6 		 x•y•z' 	1 1 0 	 0	 0 	1 	  0 	      0 
+    7 		 x•y•z 		1 1 1 	 0 	 0 	0 	  0 	      0 
+   
+								    SoP (0,1,2,3,4) 
+a.) x'.(y+z')' 
+
+#mintermos	x	y	z	z'	y + z'	(y + z')'	x'	x' • (y + z')'	 
+   0		0	0	0	1	  1	   0		1		0
+   1		0	0	1	0	  0	   1		1		1
+   2		0	1	0	1	  1	   0		1		0
+   3		0	1	1	0	  1	   0		1		0
+   4		1	0	0	1	  1	   0		0		0
+   5		1	0	1	0	  0	   1		0		0
+   6		1	1	0	1	  1	   0		0		0
+   7		1	1	1	0	  1	   0		0		0
+
+
+b.) (x'+y)'.z
+
+   
+#mintermos	x	y	z	x'	x' + y	 (x' + y)'     (x' + y)' • z
+0		0	0	0	1	   1	     0		    0
+1		0	0	1	1	   1	     0		    0
+2		0	1	0	1	   1	     0	            0
+3		0	1	1	1	   1	     0		    0
+4		1	0	0	0	   0	     1		    0
+5		1	0	1	0	   0	     1		    1
+6		1	1	0	0	   1	     0		    0
+7		1	1	0	1	   0	     0		    0
+
+
+c.) (x'.y')'.z'
+
+#mintermos	x	y	z	x'	y'	x' • y'	    (x' • y')'	  z'	(x' • y')' • z'
+0		0	0	0	1	1	  1		0	  1		0
+1		0	0	1	1	1	  1		0	  0		0
+2		0	1	0	1	0	  0		1      	  1		1
+3		0	1	1	1	0	  0		1	  0		0
+4		1	0	0	0	1	  0		1	  1		1
+5		1	0	1	0	1	  0		1	  0		0
+6		1	1	0	0	0	  0		1	  1		1
+7		1	1	1	0	0	  0		1	  0		0
+
+
+
+d.) (x.y')'.z
+#mintermos	x	y	z	y'	x • y'	     (x • y')'	   (x • y')' • z
+0		0	0	0	1	  0		1		0
+1		0	0	1	1	  0		1		1
+2		0	1	0	0	  0		1		0
+3		0	1	1	0	  0		1		1
+4		1	0	0	1	  1		0		0
+5		1	0	1	1	  1		0		0
+6		1	1	0	0	  0		1		0
+7		1	1	1	0	  0		1		1
+ 
+
+e.) (x'+y').(y+z')' 
+#mintermos	x	y	z	x'	y'	x' + y'	z'	y + z'	     (y + z')'	(x' + y') • (y + z')'
+0		0	0	0	1	1	    1		  1		1		0	
+1		0	0	1	1	1	    1		  0		1		0	
+2		0	1	0	1	0	    1		  1		1		0	
+3		0	1	1	1	0	    1		  0		1		0	
+4		1	0	0	0	1	    1		  1		1		0
+5		1	0	1	0	1	    1		  0		1		0	
+6		1	1	0	0	0	    0		  1		1		0	
+7		1	1	1	0	0	    0		  0		1		0	
+
+
+
+02.) Simplificar as expressões abaixo pelas propriedades da álgebra de Boole 
+e verificar pelas respectivas tabelas-verdades implementadas em Verilog ou pelo Logisim: 
+
+ 
+a.) x'.( x + y )' = x'.(x'.y') = x'.x'.y' = x'.y'
+ 
+b.) ( x + y' ) + ( x' . y' ) = x+y'
+ 
+c.) ( x  . y'  )' . ( x + y ) = (x'+y).(x+y) = (x'.x)+(x'.y)+(y.x)+(y.y) = 0+x'.y+x.y+y = y.(x'+x+1) = y.1 = y
+ 
+d.) ( x . y' )'  + ( x + y' )' = (x'+y)+(x'.y) = x'+y
+ 
+e.) ( y + x'  )  . ( y' + x )' = (y+x').(y.x') = y.y.x'+x'.y.x' = y.x'+y.x' = y.x'
+
+
+
+03.) Montar as tabelas-verdades expressas pelas somas de produtos abaixo 
+e verificar pelas respectivas tabelas-verdades implementadas em Verilog ou pelo Logisim: 
+Exemplo: 
+f (x,y,z) =∑ m ( 0, 1, 2, 3, 4 ) = SoP (0,1,2,3,4) = 1 
+ 
+ 
+m 	x 	y	z 	mintermos	 SoP (0,1,2,3,4) 
+0 	0 	0	0 	x'•y'•z' = m0 		1 
+1 	0 	0 	1 	x'•y'•z  = m1 		1 
+2 	0 	1 	0 	x'•y •z' = m2 		1 
+3 	0 	1	1 	x'•y •z = m3 		1 
+4 	1 	0	0 	x•y'•z' = m4 		1 
+5 	1 	0 	1 	x•y'•z 			0 
+6 	1 	1 	0 	x•y•z'			0 
+7 	1	1	1 	x•y•z 			0
+
+
+a) f (x,y,z)    = ∑ m ( 1, 2, 6, 7 ) = 
+m	x	y	z	mintermos	SoP (1,2,6,7)
+0	0	0	0	x'•y'•z'  		0
+1	0	0	1	x'•y'•z   		1
+2	0	1	0	x'•y •z' 		1
+3	0	1	1	x'•y •z  		0
+4	1	0	0	x•y'•z'  		0	
+5	1	0	1	x•y'•z			0	
+6	1	1	0	x•y•z'			1	
+7	1	1	1	x•y•z 			1	
+
+
+
+
+b) f (x,y,z)    = ∑ m ( 3, 5, 6, 7 ) = 
+m	x	y	z	mintermos	SoP (3,5,6,7)
+0	0	0	0	x'•y'•z'  		0
+1	0	0	1	x'•y'•z   		0
+2	0	1	0	x'•y •z' 		0
+3	0	1	1	x'•y •z  		1
+4	1	0	0	x•y'•z'  		1	
+5	1	0	1	x•y'•z			0	
+6	1	1	0	x•y•z'			1	
+7	1	1	1	x•y•z 			1
+
+
+
+
+c) f (x,y,w,z) = ∑ m ( 1, 2, 3, 5, 7, 13, 15 ) 
+m	x	y	w	z	mintermos	SoP (1, 2, 3, 5, 7, 13, 15)
+0	0	0	0	0	 x′⋅y′⋅w′⋅z′		0
+1	0	0	0	1	 x′⋅y′⋅w′⋅z 		1
+2	0	0	1	0	 x′⋅y′⋅w⋅z′		0
+3	0	0	1	1	 x′⋅y′⋅w⋅z 		1
+4	0	1	0	0	 x′⋅y⋅w′⋅z′ 		0	
+5	0	1	0	1	 x′⋅y⋅w′⋅z		1	
+6	0	1	1	0	 x′⋅y⋅w⋅z′		1	
+7	0	1	1	1	 x′⋅y⋅w⋅z			1
+8	1	0	0	0	 x⋅y′⋅w′⋅z′		0
+9	1	0	0	1	 x⋅y′⋅w′⋅z		1
+10	1	0	1	0	 x⋅y′⋅w⋅z′		0
+11	1	0	1	1	 x⋅y′⋅w⋅z			1
+12	1	1	0	0	 x⋅y⋅w′⋅z′		1	
+13	1	1	0	1	 x⋅y⋅w′⋅z			0
+14	1	1	1	0	 x⋅y⋅w⋅z′			1
+15	1	1	1	1	 x⋅y⋅w⋅z			1
+
+
+
+
+d) f (x,y,w,z) = ∑ m ( 1, 2, 4, 8, 10, 12, 14 )  
+m	x	y	w	z	mintermos	SoP (1, 2, 4, 8, 10, 12, 14 )
+0	0	0	0	0	 x′⋅y′⋅w′⋅z′		0
+1	0	0	0	1	 x′⋅y′⋅w′⋅z 		1
+2	0	0	1	0	 x′⋅y′⋅w⋅z′		1
+3	0	0	1	1	 x′⋅y′⋅w⋅z 		0
+4	0	1	0	0	 x′⋅y⋅w′⋅z′ 		1	
+5	0	1	0	1	 x′⋅y⋅w′⋅z		0	
+6	0	1	1	0	 x′⋅y⋅w⋅z′		0	
+7	0	1	1	1	 x′⋅y⋅w⋅z			0
+8	1	0	0	0	 x⋅y′⋅w′⋅z′		1
+9	1	0	0	1	 x⋅y′⋅w′⋅z		0
+10	1	0	1	0	 x⋅y′⋅w⋅z′		1
+11	1	0	1	1	 x⋅y′⋅w⋅z			0
+12	1	1	0	0	 x⋅y⋅w′⋅z′		1	
+13	1	1	0	1	 x⋅y⋅w′⋅z			0
+14	1	1	1	0	 x⋅y⋅w⋅z′			1
+15	1	1	1	1	 x⋅y⋅w⋅z			0
+
+
+
+
+e) f (x,y,w,z) = ∑ m ( 0, 2, 6, 7, 8, 14 )  
+m	x	y	w	z	mintermos	SoP (0, 2, 6, 7, 8, 14)
+0	0	0	0	0	 x′⋅y′⋅w′⋅z′		1
+1	0	0	0	1	 x′⋅y′⋅w′⋅z 		1
+2	0	0	1	0	 x′⋅y′⋅w⋅z′		0
+3	0	0	1	1	 x′⋅y′⋅w⋅z 		0
+4	0	1	0	0	 x′⋅y⋅w′⋅z′ 		0	
+5	0	1	0	1	 x′⋅y⋅w′⋅z		0	
+6	0	1	1	0	 x′⋅y⋅w⋅z′		1	
+7	0	1	1	1	 x′⋅y⋅w⋅z			1
+8	1	0	0	0	 x⋅y′⋅w′⋅z′		1
+9	1	0	0	1	 x⋅y′⋅w′⋅z		0
+10	1	0	1	0	 x⋅y′⋅w⋅z′		0
+11	1	0	1	1	 x⋅y′⋅w⋅z			0
+12	1	1	0	0	 x⋅y⋅w′⋅z′		0	
+13	1	1	0	1	 x⋅y⋅w′⋅z			0
+14	1	1	1	0	 x⋅y⋅w⋅z′			1
+15	1	1	1	1	 x⋅y⋅w⋅z			0
+
+
+
+04.) Montar as expressões PoS equivalentes aos produtos das somas abaixo 
+e verificar pelas respectivas tabelas-verdades implementadas em Verilog ou pelo Logisim: 
+Exemplo: 
+F (X,Y,Z) = π M ( 5, 6, 7 ) = PoS (5,6,7) = 0
+
+a) F (X,Y,Z)     = π M ( 1, 3, 6, 7 ) = (X+Y+Z′).(X+Y′+Z′).(X′+Y′+Z).(X′+Y′+Z′)
+
+b) F (X,Y,Z)     = π M ( 0, 2, 6, 7 )  = (X+Y+Z).(X+Y′+Z).(X′+Y′+Z).(X′+Y′+Z′)
+
+c) F (X,Y,W,Z) = π M ( 0, 1, 2, 5, 6, 7, 11, 13 )  = (X+Y+W+Z).(X+Y+W+Z′).(X+Y+W′+Z).(X+Y′+W+Z′).(X+Y′+W′+Z).(X+Y′+W′+Z′).(X′+Y+W′+Z′).(X′+Y+W′+Z)
+
+d) F (X,Y,W,Z) = π M ( 1, 2, 4, 6, 8, 9, 14 )  = (X+Y+W+Z′).(X+Y+W′+Z).(X+Y′+W+Z).(X+Y′+W′+Z).(X′+Y+W+Z′).(X′+Y+W′+Z).(X′+Y′+W′+Z′)
+
+e) F (X,Y,W,Z) = π M ( 0, 1, 2, 4, 5, 11, 15 ) = (X+Y+W+Z).(X+Y+W+Z′).(X+Y+W′+Z).(X+Y′+W+Z).(X+Y′+W+Z′).(X′+Y+W′+Z′).(X′+Y′+W′+Z′)
+
+
+
+05.) Identificar as expressões SoP e PoS equivalentes às tabelas abaixo 
+e verificar pelas respectivas tabelas-verdades implementadas em Verilog ou pelo Logisim:
+a)SoP(x,y) = x'.y
+PoS(x,y) = (x+y).(x’+y).(x’+y’​)
+
+b) SoP(x,y) = x’.y​’+x.y’​
+PoS(x,y) = (x+y​’).(x’+y’​)
+
+c) SoP(x,y,z) = x’.y’​.z’+x’.y.z’+x’.y.z+x.y’​.z’+x.y.z’+x.y.z
+PoS(x,y,z) = (x+y+z).(x’+y+z)
+
+d) SoP(x,y,z) = x’.y’​.z’+x’.y.z’+x.y’​.z’+x.y’​.z
+PoS(x,y,z) = (x+y+z).(x+y’​+z).(x’+y’​+z).(x’+y​’+z)
+
+d) SoP(x,y,w,z) = x’.y’.​w’.z’+x’.y’​.w.z+x’.y.w’.z+x’.y.w.z’+x.y’​.w’.z’+x.y’​.w.z’.x.y.w’.z’+x.y.w.z’+x.y.w.z
+PoS(x,y,w,z) = (x+y+w+z’).(x+y+w’+z).(x+y’​+w+z).(x+y’​+w’+z’).(x’+y+w+z’).(x’+y+w’+z’).(x’+y​’+w+z’)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

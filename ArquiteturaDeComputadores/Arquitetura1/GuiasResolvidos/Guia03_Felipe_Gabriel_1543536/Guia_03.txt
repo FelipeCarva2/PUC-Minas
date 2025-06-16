@@ -1,0 +1,102 @@
+Felipe Gabriel de Carvalho - 1543536
+ARQ-01
+Guia_03
+
+01.) Determinar os complementos para os valores e as quantidades de bits indicadas:
+DICA: Ajustar primeiro o tamanho, antes de calcular o complemento (C1,n ou C2,n).
+
+01a.) manualmente
+a.) C1,6 (1011(2)) = X(2)	0 01011 => 1 10100
+
+b.) C1,8 (1100(2)) = X(2)	0 0001100 => 1 1110011
+
+c.) C2,6 (100011(2)) = X(2)	1 00011 => 011100 + 1 => 011101
+
+d.) C2,7 (101001(2)) = X(2)	0 101001 => 1 010110 + 1 => 1 010111 
+
+e.) C2,8 (111010(2)) = X(2)	0 0111010 => 1 1000101 + 1 => 1 1000110
+
+----------------------------------------------------------------------------------------------------------------------
+
+02.) Determinar os complementos para os valores e as quantidades indicadas:
+DICA: Para valores em outras bases, converter para binário, primeiro;
+ encontrar a representação em complemento, e retornar à base,
+ caso necessário.
+02a.) manualmente
+
+a.) C1,6 (123(4)) = X(2) => 011011 => 1 00100
+
+b.) C1,8 (C4(16)) = X(2) => 11000100 => 0 0111011 
+
+c.) C2,6 (312(4)) = X(2) => 110110 => 0 01001 + 1 => 0 01010
+
+d.) C2,10 (153(8)) = X(2) => 001101011 => 1 110010100 +1 => 1 110010101
+ 
+e.) C2,8 (7D(16)) = X(2) => 01111101 => 1 0000010 + 1 => 1 0000011
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+03.) Determinar os valores positivos equivalentes aos complementos de dois indicados:
+ DICA: Subtrair uma unidade, antes de inverter cada bit.
+
+03a.) manualmente
+a.) 1 0101(2) = X(10) => 1 0100 => 01011 => 11
+
+b.) 1 10101(2) = X(10) => 1 10100 => 0 01011 => 11
+
+c.) 1 00110(2) = X(2) => 1 00101 => 0 11010
+
+d.) 1 010111(2) = X(2) => 1 010110 => 0 101001
+
+e.) 1 110101(2) = X(16) => 1 110100 => 0 001011 => 0000 1011 => D
+
+----------------------------------------------------------------------------------------------------------------------
+
+04.) Fazer as operações indicadas mediante uso de complemento de dois:
+DICAS: Levar todas as representações para binário, com a mesma quantidade de bits,
+ a menor necessária para acomodar a parte significativa e incluir o sinal.
+ Substituir apenas os subtraendos pelos complementos equivalentes e somar.
+ Voltar os resultados às bases originais.
+
+04a.) manualmente
+a.) 11101(2) - 1101(2) = X(2) = 11010
+
+	 11101
+	+00011 => (1)00000
+
+
+b.) 101,1001(2) - 10,01(2) = X(2)  => 101,1001 - 010,0100 => 101,1001 - 010,0011 =>  101,1001 + 101,1100 = (1)0110101
+	
+	 101,1001
+	+101,1100 => (1)0110101
+
+c.) 321(4) - 213(4) = X(4) => 111001 - 100111 => 111001 - 100110 => 111001 + 011001 = (1)010010
+
+	 111001	
+	-011001 => (1)010010
+
+d.) 354(8) - 265(8) = X(8) => 011101100 - 010110101 => 011101100 - 010110100 => 01110110 + 101001011 = (1)000110111
+
+	 011101100
+	+101001011 => (1)000110111
+
+e.) 6A2(16) - C14(16) = X(16) => 011010100010 - 110000010100 => 011010100010 - 110000010011 => 011010100010 + 001111101100
+= 101010001110
+
+	 011010100010
+	+001111101100 => 101010001110
+
+------------------------------------------------------------------------------------------------------------------------
+
+05.) Executar as operações abaixo,
+armazenar seus dados e resultados em registradores de 8 bits,
+usar complemento de 2 nas subtrações,
+e mostrar os valores resultantes em binário:
+05a.) manualmente
+a.) 110110(2) – 001101(2) => 0 110110 + 1 110011 = 1 101001
+b.) 101,1011(2) – 3,4(8) => 0 101,1011 - 0 011,1000 => 0 101,1011 - 0 011,0111 => 0 101,1011 + 1 011,0111 = 0 001,0010 
+c.) 231(4) – 3A(16) => 101101 - 00111010 => 0 0101101 - 0 0111001 => 0 0101101 + 1 1000110 = 1 1110011
+d.) D3(16) – 1011101(2) => 11010011 - 01011100 => 1 1010011 + 1 0100011 = 0 1110111 
+e.) 5E(16) – 3C(16) => 01011110 - 00111100 => 0 1011110 + 1 1000100 = 0 0110010
+
