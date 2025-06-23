@@ -3,16 +3,103 @@
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 // ---------------------------------------------------------------------------------------------------- //
 
+//---------------------------------------------------------------------------------------------------- //
+    //Classe No
+//---------------------------------------------------------------------------------------------------- //
+class No {
+	public Show elemento;
+	public No dir;
+	public No esq;
+	
+	No(Show elemento) {
+		this.elemento = elemento;
+		this.dir = null;
+		this.esq = null;
+	}
+	
+	No(Show elemento, No dir, No esq) {
+		this.elemento = elemento;
+		this.dir = dir;
+		this.esq = esq;
+	}
+}
+
+//---------------------------------------------------------------------------------------------------- //
+    //Classe ArvoreBinaria
+//---------------------------------------------------------------------------------------------------- //
+class ArvoreBinaria {
+	public No raiz;
+
+	public ArvoreBinaria() {
+		this.raiz = null;
+	}
+
+	public void inserir(Show x) {
+		raiz = inserir(x, raiz);
+	}
+
+	public No inserir(Show x, No i) {
+        Show.comp++;
+		if(i == null) {
+		    return new No(x);
+		} else if(x.getTitle().compareTo(i.elemento.getTitle()) < 0) {
+			i.esq = inserir(x, i.esq);
+            Show.comp++;
+		} else if(x.getTitle().compareTo(i.elemento.getTitle()) > 0) {
+			i.dir = inserir(x, i.dir);
+            Show.comp++;
+		}
+		
+		return i;
+	}
+	
+	public boolean pesquisar(String x){
+	    System.out.print("=>raiz  ");
+	    boolean resp = pesquisar(x, raiz);
+        Show.comp++;
+	    if(resp == true){
+	        System.out.println("SIM");
+	    }else{
+	        System.out.println("NAO");
+	    }
+	    return resp;
+	}
+	
+	public boolean pesquisar(String x, No i){
+        if(i == null){
+            return false;
+        }else{
+            Show.comp++;
+            if(x.compareTo(i.elemento.getTitle()) < 0){
+                System.out.print("esq ");
+                return pesquisar(x, i.esq);
+            }else if(x.compareTo(i.elemento.getTitle()) > 0){
+                System.out.print("dir ");
+                 Show.comp++;
+                return pesquisar(x, i.dir);
+            }else{
+                 Show.comp++;
+                return true;
+            } 
+        }
+    }
+
+}
+//---------------------------------------------------------------------------------------------------- //
+    //Classe Show
+//---------------------------------------------------------------------------------------------------- //
+
 public class Show{
     // Global variables
-    //public static final String FILE_PATH = "/tmp/disneyplus.csv";
-    public static final String FILE_PATH = "/home/felipe/PUCMinas/AEDs/AEDs2/tp02/Q01/disneyplus.csv";
-    //public static ArrayList<Show> allShows = new ArrayList<Show>();  //Não utilizado
+    public static final String FILE_PATH = "/tmp/disneyplus.csv";
+    //public static final String FILE_PATH = "/home/felipe/PUCMinas/AEDs/AEDs2/tp02/Q01/disneyplus.csv";
     public static int mov = 0, comp = 0; //Variaveis para contar movimentações e comparações
 
     //Atributos
@@ -142,9 +229,7 @@ public class Show{
 
             
         }
-        //teste para ver se todos os atributos foram separados em strings
-        //for (int j = 0; j < atrib.size(); j++){ System.out.println(atrib.get(j)); } System.out.println("\n");
-        
+           
         showzinho.setShow_id(atrib.get(0));
 		showzinho.setType(atrib.get(1));
 		showzinho.setTitle(atrib.get(2));
@@ -174,7 +259,7 @@ public class Show{
         return showzinho;
     }
     
-    //+-+-+--+-+-+-+ Função para separar elementoentos por virgula +-+-+--+-+-+-+
+    //+-+-+--+-+-+-+ Função para separar elementos por virgula +-+-+--+-+-+-+
     public static ArrayList<String> Separa(String s){
         ArrayList<String> separado = new ArrayList<>();
         int i = 0;
@@ -196,78 +281,6 @@ public class Show{
         Collections.sort(separado);
         return separado;
     }
-    
-    //+-+-+--+-+-+-+Função para imprimir todos os shows de uma lista +-+-+--+-+-+-+
-
-    public static void ImprimirLista( ArrayList<Show> show){
-        SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);//Tratamento da data
-        for(int i=0; i< show.size();i++){
-         
-
-                String dataFormatada = (show.get(i).date_added != null) ? outputFormat.format(show.get(i).date_added) : "NaN"; //Tratamento da data
-                System.out.print("=> " + show.get(i).Show_id);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).title);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).type);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).director);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).cast);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).country);
-                System.out.print(" ## ");
-                System.out.print(dataFormatada);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).release_year);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).rating);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).duration);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).listed_in); 
-                System.out.println(" ## ");
-
-            
-        }
-         
-    }
-
-    //+-+-+--+-+-+-+Função para imprimir a serie desejada+-+-+--+-+-+-+
-    public static void ImprimirPorId(String id, ArrayList<Show> show){
-        SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);//Tratamento da data
-        for(int i=0; i< show.size();i++){
-            if(show.get(i).getShow_id().equals(id)){
-
-                String dataFormatada = (show.get(i).date_added != null) ? outputFormat.format(show.get(i).date_added) : "NaN"; //Tratamento da data
-                System.out.print("=> " + show.get(i).Show_id);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).title);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).type);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).director);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).cast);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).country);
-                System.out.print(" ## ");
-                System.out.print(dataFormatada);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).release_year);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).rating);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).duration);
-                System.out.print(" ## ");
-                System.out.print(show.get(i).listed_in); 
-                System.out.println(" ## ");
-
-            }
-        }
-         
-    }
-
     //+-+-+--+-+-+-+ Funação para clonar +-+-+--+-+-+-+
     public Show clone() {
         Show clone = new Show();
@@ -313,25 +326,6 @@ public class Show{
         
     }
 
-    //+-+-+--+-+-+-+ Função Pesquisa Sequencial +-+-+--+-+-+-+
-    public static void pesqSeq(ArrayList<Show> lista, String title){
-        boolean resp = false;
-        int n = lista.size();
-  
-        for(int i = 0; i < n; i++){
-           if(lista.get(i).title.equals(title)){
-               resp = true;
-               i = n;
-            }
-            comp++;
-        }
-         
-        if(resp){
-            System.out.println("SIM");
-        }else{
-            System.out.println("NAO");
-        }
-     }
 
      //+-+-+--+-+-+-+ Função swap de show +-+-+--+-+-+-+
     public static void swap(ArrayList<Show> lista, int i, int j) {
@@ -342,20 +336,7 @@ public class Show{
             mov += 3;
         }
     }
-     //+-+-+--+-+-+-+ Algoritmo de Seleção(title) +-+-+--+-+-+-+
-     public static void Selecao(ArrayList<Show> lista) {
-        int n = lista.size();
-        for (int i = 0; i < n - 1; i++) {
-            int menor = i;
-            for (int j = i + 1; j < n; j++) {
-                if (lista.get(j).getTitle().compareToIgnoreCase(lista.get(menor).getTitle()) < 0) {
-                    menor = j;
-                }
-                comp++;
-            }
-            swap(lista, menor, i); 
-        }
-    }
+     
      //+-+-+--+-+-+-+ Função para retornar a serie pesquisa +-+-+--+-+-+-+
      public static Show procurar(ArrayList<Show> showzinho, String id){
         for (int i = 0; i < showzinho.size(); i++) {
@@ -366,160 +347,61 @@ public class Show{
         return null;
     }
 
-    public void imprimir() {
-        SimpleDateFormat data = new SimpleDateFormat("MMMM d, yyyy");
-        System.out.print("=> " + getShow_id());
-        System.out.print(" ## " + getTitle());
-        System.out.print(" ## " + getType());
-        System.out.print(" ## " + getDirector());
-        System.out.print(" ## " + getCast());
-        System.out.print(" ## " + getCountry());
-        System.out.print(" ## ");
-        System.out.print(getDate_added() != null ? data.format(getDate_added()) : "NaN");
-        System.out.print(" ## " + getRelease_year());
-        System.out.print(" ## " + getRating());
-        System.out.print(" ## " + getDuration());
-        System.out.println(" ## " + getListed_in() + " ##");
+    //+-+-+--+-+-+-+ Função para criar o log +-+-+--+-+-+-+
+    public static void arquivoLog(double duracao){
+        String matricula = "1543536";
+        try {
+            PrintWriter w = new PrintWriter(matricula + "_arvoreBinaria.txt");
+            w.printf("%s\t%d\t%fms", matricula, comp, duracao);
+            w.close();
+        } catch (IOException e) {
+            System.err.println("Erro para escrever no arquivo de log: " + e.getMessage());
+        }
     }
     
-
     //---------------------------------------------------------------------------------------------------- //
     //Fução main 
     public static void main(String[] args) {
-        
-        Scanner sc = new Scanner(System.in);
-        ArrayList<Show> showzinho = Ler();
+        int j = 0;
         String id = "";
-        Lista lista = new Lista(1000);
+        ArrayList<Show> showzinho = Ler();
+        String[] listaPesquisa = new String[100];
+        ArvoreBinaria arvore = new ArvoreBinaria();   
+        Scanner sc = new Scanner(System.in);
         id = sc.nextLine();
         while (!id.equals("FIM")) {
             for (int i = 0; i < showzinho.size(); i++) {
                 if (showzinho.get(i).getShow_id().equals(id)) {
-                    lista.inserirFim(showzinho.get(i));
+                    arvore.inserir(showzinho.get(i));
+                    j++;
                 }
             }
             id = sc.nextLine();
         }
-        Lista listaRemovidos = new Lista(1000);
-        int n = sc.nextInt();
-        sc.nextLine();
-        for(int i = 0; i < n; i++){
-            String comando = sc.next();
-            
-            if(comando.equals("II")){
-                id = sc.next();
-                lista.inserirInicio(procurar(showzinho, id));
-            }else if(comando.equals("IF")){
-                id = sc.next();
-                lista.inserirFim(procurar(showzinho, id));
-            }else if(comando.equals("I*")){
-                int pos = sc.nextInt();
-                id = sc.next();
-                lista.inserir(procurar(showzinho, id), pos);
-            }else if(comando.equals("RI")){
-                Show removido = lista.removerInicio();
-                listaRemovidos.inserirFim(removido);
-            }else if(comando.equals("RF")){
-                Show removido = lista.removerFim();
-                listaRemovidos.inserirFim(removido);
-            }else if(comando.equals("R*")){
-                int pos = sc.nextInt();
-                Show removido = lista.remover(pos);
-                listaRemovidos.inserirFim(removido);
-            }
-            if(i != n-1){
-                sc.nextLine();
-            }
-        }
-        for(int i = 0; i < listaRemovidos.n; i++){
-            System.out.println("(R) " + listaRemovidos.pegar(i).getTitle());
-        }
-        for(int i = 0; i < lista.n; i++){
-            lista.pegar(i).imprimir();
-        }
-        sc.close();
-    }
-}
-
-//---------------------------------------------------------------------------------------------------- //
-    //Classe lista
-//---------------------------------------------------------------------------------------------------- //
-
-class Lista{
-	public Show[] array;
-	public int n;
-	
-    Lista(int tam){
-        array = new Show[tam];
-        n = 0;
-    }
-    
-    public void inserirInicio(Show elemento){
-        if(n >= array.length){
-            throw new RuntimeException("Erro!"); 
-        }
-        for(int i = n; i > 0; i--){
-            array[i] = array[i-1];  
-        }
-        n++;
-        array[0] = elemento;
         
-    }
-    
-    public void inserirFim(Show elemento){
-        if(n >= array.length){
-            throw new RuntimeException("Erro!");
+        j = 0;
+        String titulo = sc.nextLine();
+        while (!titulo.equals("FIM")) {
+            listaPesquisa[j] = titulo;
+            j++;
+            titulo = sc.nextLine();
         }
-        array[n++] = elemento;
-    }
-    
-    public void inserir(Show elemento, int pos){
-        if(n >= array.length || pos < 0 || pos > n){
-            throw new RuntimeException("Erro!");
+        
+        long inicioTempo = System.nanoTime();
+        for(int i = 0; i < j; i++){
+            arvore.pesquisar(listaPesquisa[i]);
         }
-        for(int i = n ; i > pos; i--){
-            array[i] = array[i-1];
-        }
-        array[pos] = elemento;
-        n++;
-    }
-    
-    public Show removerInicio(){
-        if(n == 0){
-            throw new RuntimeException("Erro!");
-        }
-        Show x = array[0];
-        for(int i = 0; i < n-1; i++){
-            array[i] = array[i+1];
-        }
-        n--;
-        return x;
-    }
-    
-    public Show removerFim(){
-        if(n == 0){
-            throw new RuntimeException("Erro!");
-        }
-        return array[--n];
-    }
-    
-    public Show remover(int pos){
-        if(n == 0 || n <= pos || pos < 0){
-            throw new RuntimeException("Erro!");
-        }
-        Show x = array[pos];
-        for(int i = pos; i < n-1; i++){
-            array[i] = array[i+1];
-        }
-        n--;
-        return x;
-    }
-    
-    public Show pegar(int pos){
-        return array[pos];
+        long fimTempo = System.nanoTime();
+        
+        double duracao = (fimTempo - inicioTempo) / 1_000_000.0; // em milisegundos
+        //Escrever no arquivo de log
+        arquivoLog(duracao);
+        sc.close();
+       
     }
 }
-  
+
+
 
 
 
