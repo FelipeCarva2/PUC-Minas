@@ -11,93 +11,140 @@ import java.util.*;
 // ---------------------------------------------------------------------------------------------------- //
 
 //---------------------------------------------------------------------------------------------------- //
+    //Classe No2
+//---------------------------------------------------------------------------------------------------- //
+class No2{
+    public Show elemento;
+    public No2 dir;
+    public No2 esq;
+    
+    public No2(Show elemento){
+        this.elemento = elemento;
+        this.dir = null;
+        this.esq = null;
+    }
+}
+//---------------------------------------------------------------------------------------------------- //
     //Classe No
 //---------------------------------------------------------------------------------------------------- //
-class No {
-	public Show elemento;
-	public No dir;
-	public No esq;
-	
-	No(Show elemento) {
-		this.elemento = elemento;
-		this.dir = null;
-		this.esq = null;
-	}
-	
-	No(Show elemento, No dir, No esq) {
-		this.elemento = elemento;
-		this.dir = dir;
-		this.esq = esq;
-	}
+class No{
+    public int elemento;
+    public No esq;
+    public No dir;
+    public No2 raiz;
+    
+    public No(int elemento){
+        this.elemento = elemento;
+        this.dir = null;
+        this.esq = null;
+        this.raiz = null;
+    }
 }
 
 //---------------------------------------------------------------------------------------------------- //
-    //Classe ArvoreBinaria
+    //Classe ArvoreDeArvore
 //---------------------------------------------------------------------------------------------------- //
-class ArvoreBinaria {
-	public No raiz;
-
-	public ArvoreBinaria() {
-		this.raiz = null;
-	}
-
-	public void inserir(Show x) {
-		raiz = inserir(x, raiz);
-	}
-
-	public No inserir(Show x, No i) {
-    if (x.getTitle() == null) {
-        return i; // Ignora inserção com título nulo
+class ArvoreDeArvore{
+    public No raiz;
+    
+    public ArvoreDeArvore(){
+        this.raiz = null;
+        int[] lista = { 7, 3, 11, 1, 5, 9, 13, 0, 2, 4, 6, 8, 10, 12, 14 };
+        for(int i = 0; i < 15; i++){
+            inserir(lista[i]);
+        }
     }
-
-    Show.comp++;
-    if (i == null) {
-        return new No(x);
-    } else if (i.elemento.getTitle() == null) {
-        return i;
-    } else if (x.getTitle().compareTo(i.elemento.getTitle()) < 0) {
-        i.esq = inserir(x, i.esq);
-        Show.comp++;
-    } else if (x.getTitle().compareTo(i.elemento.getTitle()) > 0) {
-        i.dir = inserir(x, i.dir);
-        Show.comp++;
+    
+    public void inserir(int x){
+        raiz = inserir(x, raiz);
     }
-
-    return i;
-}
-
+    
+    public No inserir(int x, No i) {
+		if(i == null) {
+		    return new No(x);
+		} else if(x < i.elemento) {
+			i.esq = inserir(x, i.esq);
+		} else if(x > i.elemento) {
+			i.dir = inserir(x, i.dir);
+		} else{
+		    throw new RuntimeException("Erro!");
+		}
+		
+		return i;
+	}
+	
+	public void inserirNaArvore(Show x){
+	    int mod = x.getRelease_year() % 15;
+	    raiz = inserirNaArvore(x, raiz, mod);
+	}
+	
+	public No inserirNaArvore(Show x, No i, int mod){
+	    if (i == null) {
+            return new No(mod); 
+        }
+	    if(mod < i.elemento) {
+			i.esq = inserirNaArvore(x, i.esq, mod);
+		} else if(mod > i.elemento) {
+			i.dir = inserirNaArvore(x, i.dir, mod);
+		} else if(mod == i.elemento){
+		    i.raiz = inserir2(x, i.raiz);
+		}
+		
+		return i;
+	}
+	
+	public No2 inserir2(Show x, No2 i){
+	    if(i == null) {
+		    return new No2(x);
+		} else if(x.getTitle().compareTo(i.elemento.getTitle()) < 0) {
+			i.esq = inserir2(x, i.esq);
+		} else if(x.getTitle().compareTo(i.elemento.getTitle()) > 0) {
+			i.dir = inserir2(x, i.dir);
+		} else{
+		    throw new RuntimeException("Erro!");
+		}
+		
+		return i;
+	}
 	
 	public boolean pesquisar(String x){
-	    System.out.print("=>raiz  ");
+	    System.out.print("raiz ");
 	    boolean resp = pesquisar(x, raiz);
-        
-	    if(resp == true){
-	        System.out.println("SIM");
-	    }else{
-	        System.out.println("NAO");
-	    }
+	    System.out.println(resp ? "SIM" : "NAO");
 	    return resp;
 	}
 	
-	public boolean pesquisar(String x, No i) {
-    if (i == null || i.elemento == null || i.elemento.getTitle() == null || x == null) {
-        return false;
-    } else {
-        Show.comp++;
-        if (x.compareTo(i.elemento.getTitle()) < 0) {
-            System.out.print("esq ");
-            return pesquisar(x, i.esq);
-        } else if (x.compareTo(i.elemento.getTitle()) > 0) {
-            System.out.print("dir ");
-            Show.comp++;
-            return pesquisar(x, i.dir);
-        } else {
+	public boolean pesquisar(String x, No i){
+	    if (i == null) {
+            return false;
+        }
+        if (pesquisar2(x, i.raiz)){
             return true;
         }
-    }
-}
-
-
+        System.out.print("ESQ ");
+        if (pesquisar(x, i.esq)){
+            return true;
+        }
+        System.out.print("DIR ");
+        return pesquisar(x, i.dir);
+	}
+	
+	public boolean pesquisar2(String x, No2 i){
+        if(i == null){
+            return false;
+        }else{
+            Show.comp++;
+            if(x.compareTo(i.elemento.getTitle()) < 0){
+                System.out.print("esq ");
+                return pesquisar2(x, i.esq);
+            }else if(x.compareTo(i.elemento.getTitle()) > 0){
+                System.out.print("dir ");
+                return pesquisar2(x, i.dir);
+            }else{
+                return true;
+            } 
+        }
+	}
 }
 //---------------------------------------------------------------------------------------------------- //
     //Classe Show
@@ -364,17 +411,22 @@ public class Show{
     //---------------------------------------------------------------------------------------------------- //
     //Fução main 
     public static void main(String[] args) {
+       
         int j = 0;
-        String id = "";
-        ArrayList<Show> showzinho = Ler();
-        String[] listaPesquisa = new String[100];
-        ArvoreBinaria arvore = new ArvoreBinaria();   
         Scanner sc = new Scanner(System.in);
+        ArrayList<Show> listaShow = Ler();
+        String id = "";
+        
+        Show[] lista = new Show[2000];
+        String[] listaPesquisa = new String[100];
+        ArvoreDeArvore arvore = new ArvoreDeArvore();
+        
         id = sc.nextLine();
         while (!id.equals("FIM")) {
-            for (int i = 0; i < showzinho.size(); i++) {
-                if (showzinho.get(i).getShow_id().equals(id)) {
-                    arvore.inserir(showzinho.get(i));
+            for (int i = 0; i < listaShow.size(); i++) {
+                if (listaShow.get(i).getShow_id().equals(id)) {
+                    lista[j] = listaShow.get(i);
+                    arvore.inserirNaArvore(listaShow.get(i));
                     j++;
                 }
             }
